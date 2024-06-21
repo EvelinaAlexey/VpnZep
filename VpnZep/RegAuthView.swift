@@ -192,7 +192,7 @@ struct RegAuthView: View {
            print("Register a new account inside of Firebase Auth and then store image in Storage somehow....")
        }
    }
-// login with google
+// login with google acc
     private func signInWithGoogle() {
          guard let clientID = FirebaseApp.app()?.options.clientID else { return }
          
