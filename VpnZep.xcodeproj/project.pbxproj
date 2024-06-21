@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8B7013702C261ED300BACE0B /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */; };
 		8B7013742C261F3400BACE0B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */; };
+		8B70137E2C2627F000BACE0B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B70137D2C2627F000BACE0B /* NetworkExtension.framework */; };
+		8B7013812C2627F000BACE0B /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013802C2627F000BACE0B /* PacketTunnelProvider.swift */; };
+		8B7013862C2627F000BACE0B /* VpnTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B70137B2C2627F000BACE0B /* VpnTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */; };
 		FD8AD8652C243C40008C4FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8642C243C40008C4FCB /* Assets.xcassets */; };
 		FD8AD8692C243C40008C4FCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8682C243C40008C4FCB /* Preview Assets.xcassets */; };
@@ -65,6 +68,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8B7013842C2627F000BACE0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD8AD8552C243C3F008C4FCB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B70137A2C2627F000BACE0B;
+			remoteInfo = VpnTunnel;
+		};
 		FD8AD86F2C243C40008C4FCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FD8AD8552C243C3F008C4FCB /* Project object */;
@@ -81,9 +91,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8B70138A2C2627F000BACE0B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8B7013862C2627F000BACE0B /* VpnTunnel.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
 		8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		8B7013762C2622DC00BACE0B /* VpnZepRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VpnZepRelease.entitlements; sourceTree = "<group>"; };
+		8B70137B2C2627F000BACE0B /* VpnTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VpnTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B70137D2C2627F000BACE0B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		8B7013802C2627F000BACE0B /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		8B7013822C2627F000BACE0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B7013832C2627F000BACE0B /* VpnTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VpnTunnel.entitlements; sourceTree = "<group>"; };
 		FD8AD85D2C243C3F008C4FCB /* VpnZep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VpnZep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnZepApp.swift; sourceTree = "<group>"; };
 		FD8AD8642C243C40008C4FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,6 +146,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8B7013782C2627F000BACE0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B70137E2C2627F000BACE0B /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FD8AD85A2C243C3F008C4FCB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,12 +257,32 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8B70137C2C2627F000BACE0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B70137D2C2627F000BACE0B /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B70137F2C2627F000BACE0B /* VpnTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				8B7013802C2627F000BACE0B /* PacketTunnelProvider.swift */,
+				8B7013822C2627F000BACE0B /* Info.plist */,
+				8B7013832C2627F000BACE0B /* VpnTunnel.entitlements */,
+			);
+			path = VpnTunnel;
+			sourceTree = "<group>";
+		};
 		FD8AD8542C243C3F008C4FCB = {
 			isa = PBXGroup;
 			children = (
 				FD8AD85F2C243C3F008C4FCB /* VpnZep */,
 				FD8AD8712C243C40008C4FCB /* VpnZepTests */,
 				FD8AD87B2C243C40008C4FCB /* VpnZepUITests */,
+				8B70137F2C2627F000BACE0B /* VpnTunnel */,
+				8B70137C2C2627F000BACE0B /* Frameworks */,
 				FD8AD85E2C243C3F008C4FCB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -235,6 +293,7 @@
 				FD8AD85D2C243C3F008C4FCB /* VpnZep.app */,
 				FD8AD86E2C243C40008C4FCB /* VpnZepTests.xctest */,
 				FD8AD8782C243C40008C4FCB /* VpnZepUITests.xctest */,
+				8B70137B2C2627F000BACE0B /* VpnTunnel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,6 +301,7 @@
 		FD8AD85F2C243C3F008C4FCB /* VpnZep */ = {
 			isa = PBXGroup;
 			children = (
+				8B7013762C2622DC00BACE0B /* VpnZepRelease.entitlements */,
 				FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */,
 				FD8AD88C2C243C8A008C4FCB /* AppDelegate.swift */,
 				FD8AD8972C243C8A008C4FCB /* FirebaseManager.swift */,
@@ -289,6 +349,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8B70137A2C2627F000BACE0B /* VpnTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B7013872C2627F000BACE0B /* Build configuration list for PBXNativeTarget "VpnTunnel" */;
+			buildPhases = (
+				8B7013772C2627F000BACE0B /* Sources */,
+				8B7013782C2627F000BACE0B /* Frameworks */,
+				8B7013792C2627F000BACE0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VpnTunnel;
+			productName = VpnTunnel;
+			productReference = 8B70137B2C2627F000BACE0B /* VpnTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		FD8AD85C2C243C3F008C4FCB /* VpnZep */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD8AD8822C243C40008C4FCB /* Build configuration list for PBXNativeTarget "VpnZep" */;
@@ -296,10 +373,12 @@
 				FD8AD8592C243C3F008C4FCB /* Sources */,
 				FD8AD85A2C243C3F008C4FCB /* Frameworks */,
 				FD8AD85B2C243C3F008C4FCB /* Resources */,
+				8B70138A2C2627F000BACE0B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8B7013852C2627F000BACE0B /* PBXTargetDependency */,
 			);
 			name = VpnZep;
 			packageProductDependencies = (
@@ -381,9 +460,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					8B70137A2C2627F000BACE0B = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					FD8AD85C2C243C3F008C4FCB = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -418,11 +500,19 @@
 				FD8AD85C2C243C3F008C4FCB /* VpnZep */,
 				FD8AD86D2C243C40008C4FCB /* VpnZepTests */,
 				FD8AD8772C243C40008C4FCB /* VpnZepUITests */,
+				8B70137A2C2627F000BACE0B /* VpnTunnel */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8B7013792C2627F000BACE0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FD8AD85B2C243C3F008C4FCB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -452,6 +542,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8B7013772C2627F000BACE0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B7013812C2627F000BACE0B /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FD8AD8592C243C3F008C4FCB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -496,6 +594,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8B7013852C2627F000BACE0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B70137A2C2627F000BACE0B /* VpnTunnel */;
+			targetProxy = 8B7013842C2627F000BACE0B /* PBXContainerItemProxy */;
+		};
 		FD8AD8702C243C40008C4FCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FD8AD85C2C243C3F008C4FCB /* VpnZep */;
@@ -521,6 +624,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8B7013882C2627F000BACE0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VpnTunnel/VpnTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RL288627CQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VpnTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VpnTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = EvelinaAlexey.VpnZep.VpnTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8B7013892C2627F000BACE0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VpnTunnel/VpnTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RL288627CQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VpnTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VpnTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = EvelinaAlexey.VpnZep.VpnTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		FD8AD8802C243C40008C4FCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -638,6 +798,7 @@
 		FD8AD8832C243C40008C4FCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = VpnZep/VpnZep.entitlements;
@@ -677,9 +838,10 @@
 		FD8AD8842C243C40008C4FCB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = VpnZep/VpnZep.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VpnZep/VpnZepRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VpnZep/Preview Content\"";
@@ -806,6 +968,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8B7013872C2627F000BACE0B /* Build configuration list for PBXNativeTarget "VpnTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B7013882C2627F000BACE0B /* Debug */,
+				8B7013892C2627F000BACE0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FD8AD8582C243C3F008C4FCB /* Build configuration list for PBXProject "VpnZep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
