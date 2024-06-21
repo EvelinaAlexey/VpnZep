@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  VpnZep
+
+  Created by Эвелина Пенькова on 20.06.2024.
+  
+*/
+
+
+"signIn" = "Sign in";
+"signUp" = "Sign up";
+"signOut" = "Sign out";
+"chooseCountry" = "Choose country";
+"off" = "Turn off";
+"user" = "User";
+"settings" = "Settings";
+"support" = "Support";
+"aboutUs" = "About Us";
+"documents" = "Documents";
+"swipeToTurnOn" = "Swipe to turn on";
+"or" = "or";
+"pswrd" = "Password";
+"PrivacyPolicy" = "Privacy policy";
+"TermsOfService" = "Terms of service";
+"Documents" = "Documents";
+"Manage" = "Manage";
+"DeleteAccount" = "Delete account";
+"exit" = "Exit";
+"delete" = "Delete";
+"exitQest" = "Are you leaving already?";
+"deleteQest" = "Are you sure about deleting your account?";
+"cancel" = "Cancel";
+"ChangeLanguage" = "Change language";
