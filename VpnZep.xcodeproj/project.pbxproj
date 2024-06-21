@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B7013702C261ED300BACE0B /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */; };
+		8B7013742C261F3400BACE0B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */; };
 		FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */; };
 		FD8AD8652C243C40008C4FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8642C243C40008C4FCB /* Assets.xcassets */; };
 		FD8AD8692C243C40008C4FCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8682C243C40008C4FCB /* Preview Assets.xcassets */; };
@@ -17,7 +19,6 @@
 		FD8AD8A02C243C8A008C4FCB /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD88D2C243C8A008C4FCB /* Models.swift */; };
 		FD8AD8A12C243C8A008C4FCB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD88E2C243C8A008C4FCB /* MainViewModel.swift */; };
 		FD8AD8A32C243C8A008C4FCB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8902C243C8A008C4FCB /* MainView.swift */; };
-		FD8AD8A42C243C8A008C4FCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8912C243C8A008C4FCB /* ContentView.swift */; };
 		FD8AD8A52C243C8A008C4FCB /* RegAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8922C243C8A008C4FCB /* RegAuthView.swift */; };
 		FD8AD8A72C243C8A008C4FCB /* GoogleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8942C243C8A008C4FCB /* GoogleView.swift */; };
 		FD8AD8A82C243C8A008C4FCB /* CountryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8952C243C8A008C4FCB /* CountryPickerView.swift */; };
@@ -61,8 +62,6 @@
 		FD8AD8F12C2441F6008C4FCB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FD8AD8F02C2441F6008C4FCB /* GoogleSignIn */; };
 		FD8AD8F32C2441F6008C4FCB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FD8AD8F22C2441F6008C4FCB /* GoogleSignInSwift */; };
 		FDC1F13B2C249ED500B82A6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDC1F13D2C249ED500B82A6A /* Localizable.strings */; };
-		FDC1F1412C24C6D100B82A6A /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1F13F2C24C6D000B82A6A /* PrivacyPolicyView.swift */; };
-		FDC1F1422C24C6D100B82A6A /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1F1402C24C6D100B82A6A /* TermsOfServiceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
+		8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		FD8AD85D2C243C3F008C4FCB /* VpnZep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VpnZep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnZepApp.swift; sourceTree = "<group>"; };
 		FD8AD8642C243C40008C4FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		FD8AD88D2C243C8A008C4FCB /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		FD8AD88E2C243C8A008C4FCB /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		FD8AD8902C243C8A008C4FCB /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		FD8AD8912C243C8A008C4FCB /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD8AD8922C243C8A008C4FCB /* RegAuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegAuthView.swift; sourceTree = "<group>"; };
 		FD8AD8942C243C8A008C4FCB /* GoogleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleView.swift; sourceTree = "<group>"; };
 		FD8AD8952C243C8A008C4FCB /* CountryPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerView.swift; sourceTree = "<group>"; };
@@ -113,8 +113,6 @@
 		FD8AD8B72C243E41008C4FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FDC1F13C2C249ED500B82A6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDC1F13E2C249EE500B82A6A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		FDC1F13F2C24C6D000B82A6A /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivacyPolicyView.swift; path = "../../../Library/Mobile Documents/com~apple~CloudDocs/something/something/PrivacyPolicyView.swift"; sourceTree = "<group>"; };
-		FDC1F1402C24C6D100B82A6A /* TermsOfServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsOfServiceView.swift; path = "../../../Library/Mobile Documents/com~apple~CloudDocs/something/something/TermsOfServiceView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +170,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B70136B2C261DD100BACE0B /* RegAuth */ = {
+			isa = PBXGroup;
+			children = (
+				FD8AD8922C243C8A008C4FCB /* RegAuthView.swift */,
+				FD8AD89A2C243C8A008C4FCB /* RegAuthViewModel.swift */,
+			);
+			path = RegAuth;
+			sourceTree = "<group>";
+		};
+		8B70136C2C261DFB00BACE0B /* SettingsMenu */ = {
+			isa = PBXGroup;
+			children = (
+				FD8AD8962C243C8A008C4FCB /* SettingsView.swift */,
+				FD8AD89B2C243C8A008C4FCB /* SettingsMenuView.swift */,
+				8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */,
+				8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */,
+				FD8AD8992C243C8A008C4FCB /* DescriptionView.swift */,
+			);
+			path = SettingsMenu;
+			sourceTree = "<group>";
+		};
+		8B70136D2C261E3600BACE0B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FD8AD8902C243C8A008C4FCB /* MainView.swift */,
+				FD8AD88E2C243C8A008C4FCB /* MainViewModel.swift */,
+				FD8AD8982C243C8A008C4FCB /* SwipeToUnlockView.swift */,
+				FD8AD8952C243C8A008C4FCB /* CountryPickerView.swift */,
+				FD8AD89C2C243C8A008C4FCB /* LoadingView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8B70136E2C261E8C00BACE0B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FD8AD88D2C243C8A008C4FCB /* Models.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8B7013752C261FFE00BACE0B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FD8AD8942C243C8A008C4FCB /* GoogleView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FD8AD8542C243C3F008C4FCB = {
 			isa = PBXGroup;
 			children = (
@@ -195,28 +242,18 @@
 		FD8AD85F2C243C3F008C4FCB /* VpnZep */ = {
 			isa = PBXGroup;
 			children = (
-				FD8AD8B72C243E41008C4FCB /* Info.plist */,
-				FD8AD88C2C243C8A008C4FCB /* AppDelegate.swift */,
-				FD8AD89D2C243C8A008C4FCB /* BungeeHairline-Regular.ttf */,
-				FD8AD8912C243C8A008C4FCB /* ContentView.swift */,
-				FD8AD8B52C243E1A008C4FCB /* GoogleService-Info.plist */,
-				FD8AD8952C243C8A008C4FCB /* CountryPickerView.swift */,
-				FD8AD8992C243C8A008C4FCB /* DescriptionView.swift */,
-				FD8AD8972C243C8A008C4FCB /* FirebaseManager.swift */,
-				FD8AD8942C243C8A008C4FCB /* GoogleView.swift */,
-				FD8AD89C2C243C8A008C4FCB /* LoadingView.swift */,
-				FDC1F13D2C249ED500B82A6A /* Localizable.strings */,
-				FD8AD8902C243C8A008C4FCB /* MainView.swift */,
-				FD8AD88E2C243C8A008C4FCB /* MainViewModel.swift */,
-				FD8AD88D2C243C8A008C4FCB /* Models.swift */,
-				FDC1F13F2C24C6D000B82A6A /* PrivacyPolicyView.swift */,
-				FDC1F1402C24C6D100B82A6A /* TermsOfServiceView.swift */,
-				FD8AD8922C243C8A008C4FCB /* RegAuthView.swift */,
-				FD8AD89A2C243C8A008C4FCB /* RegAuthViewModel.swift */,
-				FD8AD8962C243C8A008C4FCB /* SettingsView.swift */,
-				FD8AD89B2C243C8A008C4FCB /* SettingsMenuView.swift */,
-				FD8AD8982C243C8A008C4FCB /* SwipeToUnlockView.swift */,
 				FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */,
+				FD8AD88C2C243C8A008C4FCB /* AppDelegate.swift */,
+				FD8AD8972C243C8A008C4FCB /* FirebaseManager.swift */,
+				8B70136E2C261E8C00BACE0B /* Model */,
+				8B7013752C261FFE00BACE0B /* Extensions */,
+				8B70136D2C261E3600BACE0B /* Main */,
+				8B70136B2C261DD100BACE0B /* RegAuth */,
+				8B70136C2C261DFB00BACE0B /* SettingsMenu */,
+				FDC1F13D2C249ED500B82A6A /* Localizable.strings */,
+				FD8AD8B72C243E41008C4FCB /* Info.plist */,
+				FD8AD8B52C243E1A008C4FCB /* GoogleService-Info.plist */,
+				FD8AD89D2C243C8A008C4FCB /* BungeeHairline-Regular.ttf */,
 				FD8AD8642C243C40008C4FCB /* Assets.xcassets */,
 				FD8AD8662C243C40008C4FCB /* VpnZep.entitlements */,
 				FD8AD8672C243C40008C4FCB /* Preview Content */,
@@ -419,12 +456,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDC1F1412C24C6D100B82A6A /* PrivacyPolicyView.swift in Sources */,
 				FD8AD8A12C243C8A008C4FCB /* MainViewModel.swift in Sources */,
 				FD8AD8A32C243C8A008C4FCB /* MainView.swift in Sources */,
+				8B7013742C261F3400BACE0B /* PrivacyPolicyView.swift in Sources */,
 				FD8AD8AA2C243C8A008C4FCB /* FirebaseManager.swift in Sources */,
 				FD8AD8AE2C243C8A008C4FCB /* SettingsMenuView.swift in Sources */,
-				FD8AD8A42C243C8A008C4FCB /* ContentView.swift in Sources */,
 				FD8AD89F2C243C8A008C4FCB /* AppDelegate.swift in Sources */,
 				FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */,
 				FD8AD8AD2C243C8A008C4FCB /* RegAuthViewModel.swift in Sources */,
@@ -436,7 +472,7 @@
 				FD8AD8A82C243C8A008C4FCB /* CountryPickerView.swift in Sources */,
 				FD8AD8AF2C243C8A008C4FCB /* LoadingView.swift in Sources */,
 				FD8AD8AC2C243C8A008C4FCB /* DescriptionView.swift in Sources */,
-				FDC1F1422C24C6D100B82A6A /* TermsOfServiceView.swift in Sources */,
+				8B7013702C261ED300BACE0B /* TermsOfServiceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
