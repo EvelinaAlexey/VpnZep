@@ -24,6 +24,7 @@ class RegAuthViewModel: ObservableObject {
 
     // code
     //evelina
+    //ajajaj
    
     
     func loginUser() {
