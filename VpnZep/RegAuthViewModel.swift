@@ -22,7 +22,7 @@ class RegAuthViewModel: ObservableObject {
   //  let didCompleteLoginProcess: () -> ()
     @Published var nonce: String?
 
-    
+    // code
    
     
     func loginUser() {
