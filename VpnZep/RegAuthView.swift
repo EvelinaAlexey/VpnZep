@@ -193,8 +193,6 @@ struct RegAuthView: View {
        }
    }
 // login with google acc
-    //alex
-    //you
     private func signInWithGoogle() {
          guard let clientID = FirebaseApp.app()?.options.clientID else { return }
          

@@ -76,29 +76,11 @@ class RegAuthViewModel: ObservableObject {
             
             print("Successfully created user: \(result?.user.uid ?? "")")
             self.loginStatusMessage = "Successfully created user: \(result?.user.uid ?? "")"
-            self.storeUserInformation(uid: user.uid)
             self.alertMessage = "Регистрация успешна! Письмо для подтверждения электронной почты было отправлено. Пожалуйста, проверьте ваш почтовый ящик, включая папку 'Спам'."
             self.showAlert = true
         }
     }
-    
-     func storeUserInformation(uid: String) {
-        let userData: [String: Any] = [
-            FirebaseConstants.email: email,
-            FirebaseConstants.uid: uid,
-            
-        ]
-        
-        FirebaseManager.shareds.firestore.collection(FirebaseConstants.users)
-            .document(uid).setData(userData) { err in
-                if let err = err {
-                    self.loginStatusMessage = "Failed to store user information: \(err.localizedDescription)"
-                    return
-                }
-                
-                self.loginStatusMessage = "User information stored successfully"
-            }
-    }
+
     
     func randomNonceString(length: Int = 32) -> String {
       precondition(length > 0)
