@@ -19,14 +19,8 @@ class RegAuthViewModel: ObservableObject {
     @Published var alertMessage = ""
     var shouldShowMainView = UserDefaults.standard.bool(forKey: "shouldShowMainView")
     @Published var showMainView = false
-  //  let didCompleteLoginProcess: () -> ()
     @Published var nonce: String?
-
-    // code
-    //evelina
-    //ajajaj
-   
-    
+ 
     func loginUser() {
         FirebaseManager.shareds.auth.signIn(withEmail: email, password: password) { result, err in
             if let err = err {
