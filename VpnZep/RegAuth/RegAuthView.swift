@@ -66,9 +66,7 @@ struct RegAuthView: View {
                                 .onSubmit {
                                     isPasswordFocused = true
                                 }
-                            
-                            
-                            
+
                             SecureField("pswrd", text: $raVm.password)
                                 .focused($isPasswordFocused)
                             
@@ -76,7 +74,7 @@ struct RegAuthView: View {
                         .multilineTextAlignment(.center)
                         .font(.system(size: 21))
                         .foregroundColor(.black)
-                        .frame(width: 277, height: 69)
+                        .frame(width: 277, height: 60)
                         .background(Color(red: 0.85, green: 0.85, blue: 0.85))
                         .cornerRadius(22)
                         .overlay(
@@ -84,7 +82,7 @@ struct RegAuthView: View {
                                 .inset(by: -1)
                                 .stroke(Color(red: 0.58, green: 0.03, blue: 0.62), lineWidth: 2)
                         )
-                        .padding(10)
+                        .padding(7)
                         
                         
                         
@@ -98,40 +96,38 @@ struct RegAuthView: View {
                                 .padding(.horizontal, 50)
                                 .padding(.vertical, 15)
                         }
+                        .frame(width: 274, height: 55)
                         .background(Color(red: 0.01, green: 0.02, blue: 0.46))
-                        .clipShape( // 1
-                            RoundedCornerShape( // 2
-                                radius: 27,
-                                corners: [.bottomLeft, .bottomRight, .topRight]
-                                              )
-                            
-                        )
+                        .cornerRadius(22)
                         .overlay(
-                            RoundedCornerShape(radius: 27, corners: [.bottomLeft, .bottomRight, .topRight])
-                                .stroke(Color.white, lineWidth: 1)
+                            RoundedRectangle(cornerRadius: 22)
+                                .stroke(Color.white, lineWidth: 2)
                         )
-                        
                         
                         //Spacer()
                         HStack{
                             Button {
                                 signInWithGoogle()
                             } label: {
-                                Image("Google")
-                                    .resizable()
-                                    .frame(width: 57, height: 57)
+                                HStack{
+                                    Image("Google")
+                                        .resizable()
+                                        .frame(width: 31, height: 31)
+                                    
+                                    Text("Google")
+                                        .font(.system(size: 17))
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 132, height: 40)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.white, lineWidth: 2)
+                                )
+                                .background(Color(.black))
+                                .cornerRadius(12)
+                               
                             }
-                            .padding(.horizontal, 25)
-                            
-// Старая кнопка для входа через Apple
-//                            Button {
-//
-//                            } label: {
-//                                Image("Apple")
-//                                    .resizable()
-//                                    .frame(width: 57, height: 57)
-//                            }
-                            
+
 // Новая кнопка Apple Sign In
                             SignInWithAppleButton(.signIn) { request in
                                 let nonce = raVm.randomNonceString()
@@ -147,10 +143,15 @@ struct RegAuthView: View {
                                     raVm.alertMessage = "\(error.localizedDescription)"
                                 }
                             }
-                            .frame(width: 50, height: 35)
-                            .padding(.horizontal, 25)
+                            .frame(width: 132, height: 40)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(Color.white, lineWidth: 2)
+                            )
+                            .background(Color(.black))
+                            .cornerRadius(12)
                         }
-                        .padding(.top)
+                        .padding(.top, 10)
                         
                         
                         
