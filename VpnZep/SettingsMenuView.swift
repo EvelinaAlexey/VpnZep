@@ -30,10 +30,14 @@ struct SettingsMenuView: View {
                 VStack (spacing: 20){
                     HStack{
                         VStack(alignment:.leading) {
-                            Text("user:")
+                            (Text("user")
                                 .font(.system(size: 15, weight: .bold))
                                 .foregroundColor(.white)
-                                .italic()
+                                .italic())
+                            + (Text(": ")
+                                .font(.system(size: 15, weight: .bold))
+                                .foregroundColor(.white)
+                                .italic())
                             
                             Text("\(vm.userEmail ?? "")")
                                 .font(.system(size: 15, weight: .regular))
