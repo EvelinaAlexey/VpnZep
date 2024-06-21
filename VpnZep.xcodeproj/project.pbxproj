@@ -12,6 +12,7 @@
 		8B70137E2C2627F000BACE0B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B70137D2C2627F000BACE0B /* NetworkExtension.framework */; };
 		8B7013812C2627F000BACE0B /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013802C2627F000BACE0B /* PacketTunnelProvider.swift */; };
 		8B7013862C2627F000BACE0B /* VpnTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B70137B2C2627F000BACE0B /* VpnTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B70138C2C262CDD00BACE0B /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70138B2C262CDD00BACE0B /* KeychainService.swift */; };
 		FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */; };
 		FD8AD8652C243C40008C4FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8642C243C40008C4FCB /* Assets.xcassets */; };
 		FD8AD8692C243C40008C4FCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8682C243C40008C4FCB /* Preview Assets.xcassets */; };
@@ -114,6 +115,7 @@
 		8B7013802C2627F000BACE0B /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		8B7013822C2627F000BACE0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B7013832C2627F000BACE0B /* VpnTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VpnTunnel.entitlements; sourceTree = "<group>"; };
+		8B70138B2C262CDD00BACE0B /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		FD8AD85D2C243C3F008C4FCB /* VpnZep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VpnZep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnZepApp.swift; sourceTree = "<group>"; };
 		FD8AD8642C243C40008C4FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */,
 				FD8AD88C2C243C8A008C4FCB /* AppDelegate.swift */,
 				FD8AD8972C243C8A008C4FCB /* FirebaseManager.swift */,
+				8B70138B2C262CDD00BACE0B /* KeychainService.swift */,
 				8B70136E2C261E8C00BACE0B /* Model */,
 				8B7013752C261FFE00BACE0B /* Extensions */,
 				8B70136D2C261E3600BACE0B /* Main */,
@@ -559,6 +562,7 @@
 				8B7013742C261F3400BACE0B /* PrivacyPolicyView.swift in Sources */,
 				FD8AD8AA2C243C8A008C4FCB /* FirebaseManager.swift in Sources */,
 				FD8AD8AE2C243C8A008C4FCB /* SettingsMenuView.swift in Sources */,
+				8B70138C2C262CDD00BACE0B /* KeychainService.swift in Sources */,
 				FD8AD89F2C243C8A008C4FCB /* AppDelegate.swift in Sources */,
 				FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */,
 				FD8AD8AD2C243C8A008C4FCB /* RegAuthViewModel.swift in Sources */,
