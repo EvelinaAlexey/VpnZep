@@ -182,7 +182,12 @@ struct MainView: View {
                         showUnlock = false
                     }
                 }
-            }
+            }.contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation {
+                        showSettingsMenu = false
+                    }
+                }
         }
     }
 }
