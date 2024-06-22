@@ -16,7 +16,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B70137A2C2627F000BACE0B"
+               BlueprintIdentifier = "8B6616562C2737990029F6E6"
                BuildableName = "VpnTunnel.appex"
                BlueprintName = "VpnTunnel"
                ReferencedContainer = "container:VpnZep.xcodeproj">
