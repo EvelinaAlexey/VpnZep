@@ -16,6 +16,7 @@ struct MainView: View {
     @State private var showCountryPicker = false
     @State private var showSettingsMenu = false
     @State private var petCount = 0
+    @ObservedObject private var vpnVm = VPN()
     
     var body: some View {
         NavigationView {
@@ -72,6 +73,12 @@ struct MainView: View {
                                 Text("ZEP")
                                     .font(.custom("BungeeHairline-Regular", size: 122))
                                     .foregroundColor(.white)
+                            }
+                            
+                            Button {
+                                vpnVm.connectVPN()
+                            } label: {
+                                Text("Connect")
                             }
                             
                             VStack {
@@ -144,6 +151,8 @@ struct MainView: View {
                                         self.didUnlock = true
                                         self.showUnlock = false
                                         showLoading = true
+//                                        vpnVm.connectVPN()
+                                        
                                     }
                                     .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                             }
