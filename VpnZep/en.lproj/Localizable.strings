@@ -33,5 +33,7 @@
 "ChangeLanguage" = "Change language";
 "version" = "Version";
 "stayInApp" = "Stay in application";
-"errReg" = "Error of Sign Up"
+"errReg" = "Error of Sign Up";
+"FailedToLoginUser" = "Failed to login user";
+"plsFerify" = "Please confirm your email before logging in";
 //eofr,vcedvc

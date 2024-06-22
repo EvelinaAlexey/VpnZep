@@ -26,7 +26,8 @@ class RegAuthViewModel: ObservableObject {
             if let err = err {
                 print("Failed to login user:", err)
                 self.loginStatusMessage = "Failed to login user: \(err)"
-                self.alertMessage = "Не удалось войти в систему: \(err.localizedDescription)"
+                let errorMessage = NSLocalizedString("FailedToLoginUser", comment: "Error of Sign Ip")
+                self.alertMessage = "\(errorMessage): \(err.localizedDescription)"
                 self.showAlert = true
                 return
             }
@@ -40,7 +41,8 @@ class RegAuthViewModel: ObservableObject {
             } else {
                 print("Email not verified.")
                 self.loginStatusMessage = "Please verify your email before logging in."
-                self.alertMessage = "Пожалуйста, подтвердите email перед входом"
+                let message = NSLocalizedString("plsFerify", comment: "need to verify)
+                self.alertMessage = "\(message)"
                 self.showAlert = true
             }
         }
@@ -53,7 +55,8 @@ class RegAuthViewModel: ObservableObject {
             if let err = err {
                 print("Failed to create user:", err)
                 self.loginStatusMessage = "Failed to create user: \(err)"
-                self.alertMessage = "errReg", ": \(err.localizedDescription)"
+                let errorMessage = NSLocalizedString("errReg", comment: "Error of Sign Up")
+                self.alertMessage = "\(errorMessage): \(err.localizedDescription)"
                 self.showAlert = true
                 return
                 
