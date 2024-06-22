@@ -1,5 +1,5 @@
 {
-  "originHash" : "7ed78cec4688813732ed048994a6c24c5c081e333197fce4007040cea0ee7d0c",
+  "originHash" : "172db5e527afe12862f678ee698ff64fe707b952b363ffa1b7b5daa13d812144",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "c89ed571ae140f8eb1142735e6e23d7bb8c34cb2",
         "version" : "1.7.5"
+      }
+    },
+    {
+      "identity" : "avvpnservice",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AndreVasilev/AVVPNService.git",
+      "state" : {
+        "revision" : "2e3e86b0649ac6624e7d7b829fd2d88c29d75dff",
+        "version" : "0.1.4"
       }
     },
     {

@@ -14,6 +14,7 @@
 		8BED4E9F2C27682500E6944B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B70137D2C2627F000BACE0B /* NetworkExtension.framework */; };
 		8BED4EA22C27682500E6944B /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED4EA12C27682500E6944B /* PacketTunnelProvider.swift */; };
 		8BED4EA72C27682500E6944B /* VpnTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8BED4E9E2C27682500E6944B /* VpnTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8BFF8BC82C2788C1008C703A /* AVVPNService in Frameworks */ = {isa = PBXBuildFile; productRef = 8BFF8BC72C2788C1008C703A /* AVVPNService */; };
 		FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */; };
 		FD8AD8652C243C40008C4FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8642C243C40008C4FCB /* Assets.xcassets */; };
 		FD8AD8692C243C40008C4FCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8682C243C40008C4FCB /* Preview Assets.xcassets */; };
@@ -183,6 +184,7 @@
 				FD8AD8E72C2440DF008C4FCB /* FirebaseRemoteConfig in Frameworks */,
 				FD8AD8C32C2440DF008C4FCB /* FirebaseAppDistribution-Beta in Frameworks */,
 				FD8AD8C72C2440DF008C4FCB /* FirebaseAuthCombine-Community in Frameworks */,
+				8BFF8BC82C2788C1008C703A /* AVVPNService in Frameworks */,
 				FD8AD8E52C2440DF008C4FCB /* FirebasePerformance in Frameworks */,
 				FD8AD8DD2C2440DF008C4FCB /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				FD8AD8EB2C2440DF008C4FCB /* FirebaseStorage in Frameworks */,
@@ -416,6 +418,7 @@
 				FD8AD8EE2C2440DF008C4FCB /* FirebaseVertexAI-Preview */,
 				FD8AD8F02C2441F6008C4FCB /* GoogleSignIn */,
 				FD8AD8F22C2441F6008C4FCB /* GoogleSignInSwift */,
+				8BFF8BC72C2788C1008C703A /* AVVPNService */,
 			);
 			productName = VpnZep;
 			productReference = FD8AD85D2C243C3F008C4FCB /* VpnZep.app */;
@@ -496,6 +499,7 @@
 			packageReferences = (
 				FD8AD8B12C243CF2008C4FCB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				FD8AD8B22C243D2D008C4FCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8BFF8BC62C2788C1008C703A /* XCRemoteSwiftPackageReference "AVVPNService" */,
 			);
 			productRefGroup = FD8AD85E2C243C3F008C4FCB /* Products */;
 			projectDirPath = "";
@@ -1022,6 +1026,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8BFF8BC62C2788C1008C703A /* XCRemoteSwiftPackageReference "AVVPNService" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreVasilev/AVVPNService.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		FD8AD8B12C243CF2008C4FCB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -1041,6 +1053,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8BFF8BC72C2788C1008C703A /* AVVPNService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BFF8BC62C2788C1008C703A /* XCRemoteSwiftPackageReference "AVVPNService" */;
+			productName = AVVPNService;
+		};
 		FD8AD8B82C2440DF008C4FCB /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FD8AD8B22C243D2D008C4FCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
