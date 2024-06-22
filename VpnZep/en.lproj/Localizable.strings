@@ -36,4 +36,6 @@
 "errReg" = "Error of Sign Up";
 "FailedToLoginUser" = "Failed to login user";
 "plsFerify" = "Please confirm your email before logging in";
+"succesSignUp" = "Registration successful! An email confirmation email has been sent. Please check your mailbox, including your Spam folder.";
+"notification" = "Notification";
 //eofr,vcedvc

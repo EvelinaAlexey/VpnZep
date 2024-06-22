@@ -41,7 +41,7 @@ class RegAuthViewModel: ObservableObject {
             } else {
                 print("Email not verified.")
                 self.loginStatusMessage = "Please verify your email before logging in."
-                let message = NSLocalizedString("plsFerify", comment: "need to verify)
+                let message = NSLocalizedString("plsFerify", comment: "need to verify")
                 self.alertMessage = "\(message)"
                 self.showAlert = true
             }
@@ -73,7 +73,8 @@ class RegAuthViewModel: ObservableObject {
             
             print("Successfully created user: \(result?.user.uid ?? "")")
             self.loginStatusMessage = "Successfully created user: \(result?.user.uid ?? "")"
-            self.alertMessage = "Регистрация успешна! Письмо для подтверждения электронной почты было отправлено. Пожалуйста, проверьте ваш почтовый ящик, включая папку 'Спам'."
+            let message = NSLocalizedString("succesSignUp", comment: "Error of Sign Up")
+            self.alertMessage = "\(message)"
             self.showAlert = true
         }
     }

@@ -179,7 +179,7 @@ struct RegAuthView: View {
                             MainView()
                         }
         }.alert(isPresented: $raVm.showAlert) {
-            Alert(title: Text("Уведомление"), message: Text(raVm.alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text("notification"), message: Text(raVm.alertMessage), dismissButton: .default(Text("OK")))
         }
     }
     
