@@ -8,7 +8,7 @@
 import Foundation
 import NetworkExtension
 
-//Vpn connection
+//Vpn connection 1
 class VPN: ObservableObject {
     
     let vpnManager = NEVPNManager.shared();
