@@ -101,7 +101,7 @@ struct RegAuthView: View {
                         .cornerRadius(22)
                         .overlay(
                             RoundedRectangle(cornerRadius: 22)
-                                .stroke(Color.white, lineWidth: 2)
+                                .stroke(Color.white, lineWidth: 1)
                         )
                         
                         //Spacer()
