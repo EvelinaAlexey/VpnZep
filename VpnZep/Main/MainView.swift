@@ -75,11 +75,7 @@ struct MainView: View {
                                     .foregroundColor(.white)
                             }
                             
-                            Button {
-                                vpnVm.connectVPN()
-                            } label: {
-                                Text("Connect")
-                            }
+                            
                             
                             VStack {
                                 if !showCountryPicker {
@@ -151,7 +147,7 @@ struct MainView: View {
                                         self.didUnlock = true
                                         self.showUnlock = false
                                         showLoading = true
-//                                        vpnVm.connectVPN()
+                                        vpnVm.connectVPN()
                                         
                                     }
                                     .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))

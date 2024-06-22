@@ -16,7 +16,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B6616562C2737990029F6E6"
+               BlueprintIdentifier = "8BED4E9D2C27682500E6944B"
                BuildableName = "VpnTunnel.appex"
                BlueprintName = "VpnTunnel"
                ReferencedContainer = "container:VpnZep.xcodeproj">
@@ -44,6 +44,30 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FD8AD86D2C243C40008C4FCB"
+               BuildableName = "VpnZepTests.xctest"
+               BlueprintName = "VpnZepTests"
+               ReferencedContainer = "container:VpnZep.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FD8AD8772C243C40008C4FCB"
+               BuildableName = "VpnZepUITests.xctest"
+               BlueprintName = "VpnZepUITests"
+               ReferencedContainer = "container:VpnZep.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

@@ -19,7 +19,7 @@ class VPN: ObservableObject {
                 return;
             }
             let p = NEVPNProtocolIPSec()
-            p.username = "SOME_USERNAME"
+            p.username = "vpn"
             p.serverAddress = "219.100.37.187"
             p.authenticationMethod = NEVPNIKEAuthenticationMethod.sharedSecret
             
@@ -31,7 +31,7 @@ class VPN: ObservableObject {
             p.useExtendedAuthentication = true
             p.disconnectOnSleep = false
             self.vpnManager.protocolConfiguration = p
-            self.vpnManager.localizedDescription = "Contensi"
+            self.vpnManager.localizedDescription = "VPN ZEP"
             self.vpnManager.isEnabled = true
             self.vpnManager.saveToPreferences(completionHandler: self.vpnSaveHandler)
         } }
