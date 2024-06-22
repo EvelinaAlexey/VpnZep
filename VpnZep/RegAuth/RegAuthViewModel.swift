@@ -53,7 +53,7 @@ class RegAuthViewModel: ObservableObject {
             if let err = err {
                 print("Failed to create user:", err)
                 self.loginStatusMessage = "Failed to create user: \(err)"
-                self.alertMessage = "Ошибка регистрации: \(err.localizedDescription)"
+                self.alertMessage = "errReg", ": \(err.localizedDescription)"
                 self.showAlert = true
                 return
                 

@@ -106,7 +106,7 @@ struct SettingsMenuView: View {
                 .padding(.top, 20)
                 Spacer()
             }.actionSheet(isPresented: $shouldShowLogOutOptions) {
-                .init(title: Text("Выход"), message: Text("Уже уходите"), buttons: [
+                .init(title: Text("exit"), message: Text("exitQest"), buttons: [
                     .destructive(Text("signOut"), action: {
                         print("handle sign out")
                         vm.handleSignOut()
@@ -115,7 +115,7 @@ struct SettingsMenuView: View {
                         
                         showRegAuthView.toggle()
                     }),
-                    .cancel(Text("Остаться"))
+                    .cancel(Text("stayInApp"))
                 ])
             }
             
