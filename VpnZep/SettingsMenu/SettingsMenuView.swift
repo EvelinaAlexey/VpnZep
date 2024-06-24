@@ -13,6 +13,7 @@ struct SettingsMenuView: View {
     @State private var shouldShowLogOutOptions = false
     @State private var showRegAuthView = false
     @State var shouldShowMainView = UserDefaults.standard.bool(forKey: "shouldShowMainView")
+    @State private var pulsate = false
     
     var body: some View {
         ZStack {
@@ -102,6 +103,28 @@ struct SettingsMenuView: View {
                         Spacer()
                     }
                 }
+                    
+                    NavigationLink(destination: PremiumPageView()) {
+                        Text("Premium")
+                            .font(.system(size: 23, weight: .bold))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 150, height: 54)
+                            .background(Color(red: 0.15, green: 0.1, blue: 0.29))
+                            .cornerRadius(42)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 42)
+                                    .inset(by: -1)
+                                    .stroke(Color(red: 1, green: 0, blue: 1), lineWidth: 2)
+                            )
+                            .scaleEffect(pulsate ? 1.1 : 1.0)
+                    }
+                    .onAppear {
+                        withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                            self.pulsate = true
+                        }
+                    }
+                    .padding(.top, 100)
             }
                 .padding(.top, 20)
                 Spacer()
