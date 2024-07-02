@@ -35,7 +35,7 @@ class VpnManager: ObservableObject {
 
                 // Set the server address as a non-nil string.
                 // It would be good to provide the server's domain name or IP address.
-                protocolConfiguration.serverAddress = "Zephyr.Vpn"
+                protocolConfiguration.serverAddress = "VpnZep.net"
 
                 let wgQuickConfig = """
                 [Interface]
