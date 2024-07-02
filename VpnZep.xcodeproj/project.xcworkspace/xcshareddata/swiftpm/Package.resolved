@@ -1,5 +1,5 @@
 {
-  "originHash" : "9b2e93a75a2289e5d7c1839d885b38bb40fa8c4d10665226257a1a87a5a76c58",
+  "originHash" : "40f51086f7be5119da722f541377c505e5a2b1e861bfcf47ffff14322f7b8841",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/divkit/divkit-ios",
       "state" : {
-        "revision" : "d1148fb63dd8e37f3eff9791a228e3ad9fcc117e",
-        "version" : "30.6.0"
+        "revision" : "cdfa53ca091e4218e26109a5ac1de0bba145e34e",
+        "version" : "30.7.0"
       }
     },
     {

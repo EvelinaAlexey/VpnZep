@@ -11,11 +11,18 @@
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at https://yandex.com/legal/mobileads_sdk_agreement/
  */
-
-import YandexMobileAds
 import UIKit
+import YandexMobileAds // Импорт SDK для рекламы
+import Combine
 
-final class InterstitialAdViewController: UIViewController {
+
+protocol InterstitialAdViewControllerDelegate: AnyObject {
+    func interstitialAdDidLoad()
+    func interstitialAdDidFailToLoadWithError(_ error: Error)
+    // Добавьте другие методы обратного вызова по мере необходимости
+}
+
+class InterstitialAdViewController: UIViewController, ObservableObject {
     var interstitialAd: InterstitialAd?
     private lazy var interstitialAdLoader: InterstitialAdLoader = {
         let loader = InterstitialAdLoader()
@@ -25,11 +32,12 @@ final class InterstitialAdViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("View did load")
         loadAd()
     }
 
     func loadAd() {
-        // Replace demo-interstitial-yandex with your actual Ad Unit ID
+        print("Attempting to load ad")
         let configuration = AdRequestConfiguration(adUnitID: "demo-interstitial-yandex")
         interstitialAdLoader.loadAd(with: configuration)
     }
@@ -41,49 +49,46 @@ final class InterstitialAdViewController: UIViewController {
         }
         interstitialAd.show(from: self)
     }
-
-    private func makeMessageDescription(_ interstitialAd: InterstitialAd) -> String {
-        "Interstitial Ad with Unit ID: \(String(describing: interstitialAd.adInfo?.adUnitId))"
-    }
 }
 
-// MARK: - YMAInterstitialAdLoaderDelegate
+// MARK: - InterstitialAdLoaderDelegate
 
 extension InterstitialAdViewController: InterstitialAdLoaderDelegate {
     func interstitialAdLoader(_ adLoader: InterstitialAdLoader, didLoad interstitialAd: InterstitialAd) {
+        print("Interstitial Ad successfully loaded")
         self.interstitialAd = interstitialAd
         self.interstitialAd?.delegate = self
-        print("\(makeMessageDescription(interstitialAd)) loaded")
+        NotificationCenter.default.post(name: NSNotification.Name("AdLoaded"), object: nil)
     }
 
     func interstitialAdLoader(_ adLoader: InterstitialAdLoader, didFailToLoadWithError error: AdRequestError) {
-        let id = error.adUnitId
-        let error = error.error
-        print("Loading failed for Ad with Unit ID: \(String(describing: id)). Error: \(String(describing: error))")
+        let id = error.adUnitId ?? "Unknown"
+        let errorDescription = error.error.localizedDescription
+        print("Failed to load Interstitial Ad with Unit ID: \(id). Error: \(errorDescription)")
     }
 }
 
-// MARK: - YMARewardedAdDelegate
+// MARK: - InterstitialAdDelegate
 
 extension InterstitialAdViewController: InterstitialAdDelegate {
     func interstitialAd(_ interstitialAd: InterstitialAd, didFailToShowWithError error: Error) {
-        print("\(makeMessageDescription(interstitialAd)) failed to show. Error: \(error)")
+        print("Interstitial Ad failed to show. Error: \(error.localizedDescription)")
     }
 
     func interstitialAdDidShow(_ interstitialAd: InterstitialAd) {
-        print("\(makeMessageDescription(interstitialAd)) did show")
+        print("Interstitial Ad did show")
     }
 
     func interstitialAdDidDismiss(_ interstitialAd: InterstitialAd) {
-        print("\(makeMessageDescription(interstitialAd)) did dismiss")
-        loadAd()  // Reload the ad after it is dismissed
+        print("Interstitial Ad did dismiss")
+        loadAd() // Повторная загрузка рекламы после закрытия
     }
 
     func interstitialAdDidClick(_ interstitialAd: InterstitialAd) {
-        print("\(makeMessageDescription(interstitialAd)) did click")
+        print("Interstitial Ad did click")
     }
 
     func interstitialAd(_ interstitialAd: InterstitialAd, didTrackImpressionWith impressionData: ImpressionData?) {
-        print("\(makeMessageDescription(interstitialAd)) did track impression")
+        print("Interstitial Ad did track impression")
     }
 }
