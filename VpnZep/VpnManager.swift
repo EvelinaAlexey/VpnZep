@@ -39,15 +39,14 @@ class VpnManager: ObservableObject {
 
                 let wgQuickConfig = """
                 [Interface]
-                PrivateKey = WGqc9sgZCHYCSNHVTqnjvZ1UWoRRdu1F4I4CQtFsKnQ=
-                Address = 10.66.66.2/32, fd42:42:42::2/128
-                DNS = 1.1.1.1, 1.0.0.1
+                PrivateKey = uCFewPPnPKW+JxrUJ6XvMiI9d6kGJ2kMBxYFi5JoEE0=
+                Address = 10.66.66.2/24
+                DNS = 1.1.1.1
 
                 [Peer]
-                PublicKey = 3GrOFlbtremcYumH247xNkkztVBAKg3AGXVWHc7kIWk=
-                PresharedKey = N5ivPWXzNZ8UiQwBf/USf3FwmcpxGytCyTTIYrnj+vE=
-                Endpoint = 45.159.248.107:53943
+                PublicKey = nSur2JC4KoTC6Bigk2yO0t9I3AZOTGKpQzbj0OmTNCA=
                 AllowedIPs = 0.0.0.0/0, ::/0
+                Endpoint = 45.159.248.107:51820
                 """
 
                 protocolConfiguration.providerConfiguration = [
