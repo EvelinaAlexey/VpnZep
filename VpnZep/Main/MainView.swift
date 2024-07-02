@@ -172,7 +172,7 @@ struct MainView: View {
                                         Text("Disconnect")
                                             .font(.system(size: 19, weight: .medium))
                                             .foregroundColor(.white)
-                                            .padding(.vertical, 10)
+                                            .padding(.vertical, 14)
                                             .padding(.horizontal)
                                             .background(
                                             LinearGradient(
