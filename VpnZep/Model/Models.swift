@@ -65,3 +65,17 @@ struct TwistedLine: View {
             .cornerRadius(9)
     }
 }
+
+struct PrivacyPolicy: Identifiable, Codable {
+    @DocumentID var id: String?
+    var informationWeCollect: String
+    var howWeUseYourInformation: String
+    var howWeProtectYourInformation: String
+    var sharingYourInformation: String
+    var yourRights: String
+    var cookiesAndTrackingTechnologies: String
+    var changesToThisPrivacyPolicy: String
+    var contactUs: String
+    var name: String
+    var update: String
+}

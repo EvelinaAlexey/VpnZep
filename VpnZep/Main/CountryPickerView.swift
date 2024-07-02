@@ -14,6 +14,7 @@ struct CountryPickerView: View {
     
     let countries = [
         Country(name: "Africa", flag: Image("africa_flag")),
+        Country(name: "France", flag: Image("france_flag")),
         Country(name: "USA", flag: Image("usa_flag")),
         Country(name: "Canada", flag: Image("canada_flag")),
         Country(name: "Mexico", flag: Image("mexico_flag"))

@@ -1,5 +1,5 @@
 {
-  "originHash" : "065b0cb6d845f7061591f0b92a5b3bc70869a5202240397b90260d7a3a59f46f",
+  "originHash" : "a161cf25a5c0d54cbdb888111d5b477b86d48834b4459c791b96fcd0cf2563ce",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -29,6 +29,15 @@
       }
     },
     {
+      "identity" : "appmetrica-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/appmetrica/appmetrica-sdk-ios",
+      "state" : {
+        "revision" : "3b74ab028f448b0342f908245f19f6a9f4563b97",
+        "version" : "5.6.0"
+      }
+    },
+    {
       "identity" : "avvpnservice",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AndreVasilev/AVVPNService.git",
@@ -38,12 +47,21 @@
       }
     },
     {
+      "identity" : "divkit-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/divkit/divkit-ios",
+      "state" : {
+        "revision" : "d1148fb63dd8e37f3eff9791a228e3ad9fcc117e",
+        "version" : "30.6.0"
+      }
+    },
+    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "03189348b7798fe94b892a35883f1dc745814fe0",
-        "version" : "10.28.0"
+        "revision" : "e57841b296d04370ea23580f908881b0ccab17b9",
+        "version" : "10.28.1"
       }
     },
     {
@@ -96,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/gtm-session-fetcher.git",
       "state" : {
-        "revision" : "0382ca27f22fb3494cf657d8dc356dc282cd1193",
-        "version" : "3.4.1"
+        "revision" : "a2ab612cb980066ee56d90d60d8462992c07f24b",
+        "version" : "3.5.0"
       }
     },
     {
@@ -116,6 +134,15 @@
       "state" : {
         "revision" : "2d12673670417654f08f5f90fdd62926dc3a2648",
         "version" : "100.0.0"
+      }
+    },
+    {
+      "identity" : "kscrash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kstenerud/KSCrash",
+      "state" : {
+        "revision" : "c9b13a7ec3483c5f8c274551d5cf2feb5723c8c5",
+        "version" : "1.17.4"
       }
     },
     {
@@ -152,6 +179,24 @@
       "state" : {
         "revision" : "9f0c76544701845ad98716f3f6a774a892152bcb",
         "version" : "1.26.0"
+      }
+    },
+    {
+      "identity" : "vgsl",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yandex/vgsl.git",
+      "state" : {
+        "revision" : "ef44b9685131fa7a8d7dc78825a6cf4d097542de",
+        "version" : "5.1.1"
+      }
+    },
+    {
+      "identity" : "yandex-ads-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yandexmobile/yandex-ads-sdk-ios",
+      "state" : {
+        "revision" : "8785d495a4f92c71e6748b7d5d208648d381b0a2",
+        "version" : "7.1.0"
       }
     }
   ],

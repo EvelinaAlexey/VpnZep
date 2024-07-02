@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+import YandexMobileAds
+import SwiftUI
 
 class MainViewModel: ObservableObject{
     @Published var errorMessage = ""
@@ -23,6 +24,7 @@ class MainViewModel: ObservableObject{
             fetchCurrentUser()
             fetchCurrentUserEmail()
         }
+
     
     func fetchCurrentUserEmail() {
         if let currentUser = FirebaseManager.shareds.auth.currentUser {
@@ -30,6 +32,7 @@ class MainViewModel: ObservableObject{
         }
     }
     
+
     func fetchCurrentUser() {
         guard let uid = FirebaseManager.shareds.auth.currentUser?.uid else {
             self.isUserCurrentlyLoggedOut = true
@@ -103,3 +106,4 @@ class MainViewModel: ObservableObject{
         }
 
 }
+

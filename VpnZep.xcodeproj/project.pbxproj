@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,9 @@
 		8BED4EA22C27682500E6944B /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED4EA12C27682500E6944B /* PacketTunnelProvider.swift */; };
 		8BED4EA72C27682500E6944B /* VpnTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8BED4E9E2C27682500E6944B /* VpnTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8BFF8BC82C2788C1008C703A /* AVVPNService in Frameworks */ = {isa = PBXBuildFile; productRef = 8BFF8BC72C2788C1008C703A /* AVVPNService */; };
+		FD1E92342C2EF33300469BDE /* YandexMobileAdsPackage in Frameworks */ = {isa = PBXBuildFile; productRef = FD1E92332C2EF33300469BDE /* YandexMobileAdsPackage */; };
+		FD1E923A2C2EFC0300469BDE /* MobileAdsBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FD1E92392C2EFC0200469BDE /* MobileAdsBundle.bundle */; };
+		FD1E923C2C2F060C00469BDE /* InterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E923B2C2F060C00469BDE /* InterstitialViewController.swift */; };
 		FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */; };
 		FD8AD8652C243C40008C4FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8642C243C40008C4FCB /* Assets.xcassets */; };
 		FD8AD8692C243C40008C4FCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8682C243C40008C4FCB /* Preview Assets.xcassets */; };
@@ -119,6 +122,9 @@
 		8BED4EA12C27682500E6944B /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		8BED4EA32C27682500E6944B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BED4EA42C27682500E6944B /* VpnTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VpnTunnel.entitlements; sourceTree = "<group>"; };
+		FD1E92372C2EF79400469BDE /* YandexMobileAds.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EK7Z26L6D4:Yandex LLC"; lastKnownFileType = wrapper.xcframework; path = YandexMobileAds.xcframework; sourceTree = "<group>"; };
+		FD1E92392C2EFC0200469BDE /* MobileAdsBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MobileAdsBundle.bundle; path = YandexMobileAds.xcframework/MobileAdsBundle.bundle; sourceTree = "<group>"; };
+		FD1E923B2C2F060C00469BDE /* InterstitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialViewController.swift; sourceTree = "<group>"; };
 		FD8AD85D2C243C3F008C4FCB /* VpnZep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VpnZep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnZepApp.swift; sourceTree = "<group>"; };
 		FD8AD8642C243C40008C4FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,6 +197,7 @@
 				FD8AD8DD2C2440DF008C4FCB /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				FD8AD8EB2C2440DF008C4FCB /* FirebaseStorage in Frameworks */,
 				FD8AD8CF2C2440DF008C4FCB /* FirebaseDynamicLinks in Frameworks */,
+				FD1E92342C2EF33300469BDE /* YandexMobileAdsPackage in Frameworks */,
 				FD8AD8EF2C2440DF008C4FCB /* FirebaseVertexAI-Preview in Frameworks */,
 				FD8AD8D32C2440DF008C4FCB /* FirebaseFirestoreCombine-Community in Frameworks */,
 				FD8AD8E32C2440DF008C4FCB /* FirebaseMessaging in Frameworks */,
@@ -242,6 +249,7 @@
 			children = (
 				FD8AD8902C243C8A008C4FCB /* MainView.swift */,
 				FD8AD88E2C243C8A008C4FCB /* MainViewModel.swift */,
+				FD1E923B2C2F060C00469BDE /* InterstitialViewController.swift */,
 				FD8AD8982C243C8A008C4FCB /* SwipeToUnlockView.swift */,
 				FD8AD8952C243C8A008C4FCB /* CountryPickerView.swift */,
 				FD8AD89C2C243C8A008C4FCB /* LoadingView.swift */,
@@ -286,6 +294,8 @@
 		FD8AD8542C243C3F008C4FCB = {
 			isa = PBXGroup;
 			children = (
+				FD1E92392C2EFC0200469BDE /* MobileAdsBundle.bundle */,
+				FD1E92372C2EF79400469BDE /* YandexMobileAds.xcframework */,
 				FD8AD85F2C243C3F008C4FCB /* VpnZep */,
 				FD8AD8712C243C40008C4FCB /* VpnZepTests */,
 				FD8AD87B2C243C40008C4FCB /* VpnZepUITests */,
@@ -422,6 +432,7 @@
 				FD8AD8F02C2441F6008C4FCB /* GoogleSignIn */,
 				FD8AD8F22C2441F6008C4FCB /* GoogleSignInSwift */,
 				8BFF8BC72C2788C1008C703A /* AVVPNService */,
+				FD1E92332C2EF33300469BDE /* YandexMobileAdsPackage */,
 			);
 			productName = VpnZep;
 			productReference = FD8AD85D2C243C3F008C4FCB /* VpnZep.app */;
@@ -503,6 +514,7 @@
 				FD8AD8B12C243CF2008C4FCB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				FD8AD8B22C243D2D008C4FCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8BFF8BC62C2788C1008C703A /* XCRemoteSwiftPackageReference "AVVPNService" */,
+				FD1E92322C2EF33300469BDE /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */,
 			);
 			productRefGroup = FD8AD85E2C243C3F008C4FCB /* Products */;
 			projectDirPath = "";
@@ -528,6 +540,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD1E923A2C2EFC0300469BDE /* MobileAdsBundle.bundle in Resources */,
 				FDC1F13B2C249ED500B82A6A /* Localizable.strings in Resources */,
 				FD8AD8692C243C40008C4FCB /* Preview Assets.xcassets in Resources */,
 				FD8AD8B62C243E1A008C4FCB /* GoogleService-Info.plist in Resources */,
@@ -585,6 +598,7 @@
 				FD8AD8AF2C243C8A008C4FCB /* LoadingView.swift in Sources */,
 				FD8AD8AC2C243C8A008C4FCB /* DescriptionView.swift in Sources */,
 				8B7013702C261ED300BACE0B /* TermsOfServiceView.swift in Sources */,
+				FD1E923C2C2F060C00469BDE /* InterstitialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +765,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -805,6 +820,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -1038,6 +1054,14 @@
 				minimumVersion = 0.1.4;
 			};
 		};
+		FD1E92322C2EF33300469BDE /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yandexmobile/yandex-ads-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
 		FD8AD8B12C243CF2008C4FCB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -1061,6 +1085,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8BFF8BC62C2788C1008C703A /* XCRemoteSwiftPackageReference "AVVPNService" */;
 			productName = AVVPNService;
+		};
+		FD1E92332C2EF33300469BDE /* YandexMobileAdsPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD1E92322C2EF33300469BDE /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */;
+			productName = YandexMobileAdsPackage;
 		};
 		FD8AD8B82C2440DF008C4FCB /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
