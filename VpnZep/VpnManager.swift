@@ -35,18 +35,19 @@ class VpnManager: ObservableObject {
 
                 // Set the server address as a non-nil string.
                 // It would be good to provide the server's domain name or IP address.
-                protocolConfiguration.serverAddress = "45.159.248.107"
+                protocolConfiguration.serverAddress = "Zephyr.Vpn"
 
                 let wgQuickConfig = """
                 [Interface]
-                PrivateKey = uCFewPPnPKW+JxrUJ6XvMiI9d6kGJ2kMBxYFi5JoEE0=
-                Address = 10.66.66.2/24
-                DNS = 1.1.1.1
+                PrivateKey = iIMOLUQ41WcC6wif7W+WU45XdOZPZhK/PJy6qn7/ZWU=
+                Address = 10.66.66.2/32,fd42:42:42::2/128
+                DNS = 1.1.1.1,1.0.0.1
 
                 [Peer]
-                PublicKey = nSur2JC4KoTC6Bigk2yO0t9I3AZOTGKpQzbj0OmTNCA=
-                AllowedIPs = 0.0.0.0/0, ::/0
-                Endpoint = 45.159.248.107:51820
+                PublicKey = DaQ/PgPGoXk5z5xDK+yO00Ry1MAvmrHgu3rHOTPDzAo=
+                PresharedKey = fnyiJDJ4zK8V3O0P+hmDG9Rxf6Oq8jzc6vPcvuFF9ho=
+                Endpoint = 45.159.248.107:61056
+                AllowedIPs = 0.0.0.0/0,::/0
                 """
 
                 protocolConfiguration.providerConfiguration = [
