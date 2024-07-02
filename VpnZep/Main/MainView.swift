@@ -175,22 +175,22 @@ struct MainView: View {
                                             .padding(.vertical, 10)
                                             .padding(.horizontal)
                                             .background(
-                                                LinearGradient(
-                                                    stops: [
-                                                        Gradient.Stop(color: Color(red: 1, green: 0, blue: 0.9), location: 0),
-                                                        Gradient.Stop(color: Color(red: 1, green: 1, blue: 1).opacity(0.68), location: 0.57),
-                                                        Gradient.Stop(color: Color(red: 0.47, green: 0.47, blue: 0.47).opacity(0.36), location: 0.95),
-                                                    ],
-                                                    startPoint: UnitPoint(x: 0.5, y: -0.91),
-                                                    endPoint: UnitPoint(x: 0.5, y: 3.36)
-                                                )
+                                            LinearGradient(
+                                            stops: [
+                                            Gradient.Stop(color: Color(red: 0.49, green: 0, blue: 0.44), location: 0),
+                                            Gradient.Stop(color: Color(red: 0.55, green: 0.55, blue: 0.55).opacity(0.68), location: 0.56),
+                                            Gradient.Stop(color: Color(red: 0.47, green: 0.47, blue: 0.47).opacity(0.36), location: 0.95),
+                                            ],
+                                            startPoint: UnitPoint(x: 0.5, y: -0.91),
+                                            endPoint: UnitPoint(x: 0.5, y: 3.36)
+                                            )
                                             )
                                             .cornerRadius(26)
                                             .shadow(color: Color(red: 0, green: 0, blue: 0).opacity(0.25), radius: 2, x: 4, y: 8)
                                             .overlay(
-                                                RoundedRectangle(cornerRadius: 26)
-                                                    .inset(by: 0.5)
-                                                    .stroke(Color(red: 1, green: 1, blue: 1), lineWidth: 1)
+                                            RoundedRectangle(cornerRadius: 26)
+                                            .inset(by: -0.5)
+                                            .stroke(Color(red: 0.3, green: 0.14, blue: 0.57), lineWidth: 1)
                                             )
                                     }
                                 }
