@@ -35,11 +35,22 @@ struct RoundedCornerShape: Shape { // 1
     }
 }
 
-struct Country {
-    let id = UUID()
+struct Country: Identifiable, Codable {
+    var id = UUID()
         let name: String
-        let flag: Image
+    let flagName: String
+    
+    var flag: Image {
+            Image(flagName)
+        }
+        
+        init(id: UUID = UUID(), name: String, flagName: String) {
+            self.id = id
+            self.name = name
+            self.flagName = flagName
+        }
     }
+
 
     extension Country: Equatable {
         static func == (lhs: Country, rhs: Country) -> Bool {

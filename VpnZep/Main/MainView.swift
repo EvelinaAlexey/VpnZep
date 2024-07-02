@@ -9,29 +9,8 @@ import SwiftUI
 import YandexMobileAds
 import UIKit
 
-struct InterstitialAdViewControllerWrapper: UIViewControllerRepresentable {
-    typealias UIViewControllerType = InterstitialAdViewController
-
-    @StateObject var interstitialAdViewController = InterstitialAdViewController()
-
-    func makeUIViewController(context: Context) -> InterstitialAdViewController {
-        print("Creating InterstitialAdViewController")
-        interstitialAdViewController.loadAd()
-        return interstitialAdViewController
-    }
-
-    func updateUIViewController(_ uiViewController: InterstitialAdViewController, context: Context) {
-        print("Updating InterstitialAdViewController")
-        if let interstitialAd = uiViewController.interstitialAd {
-            print("Presenting the ad")
-            interstitialAd.show(from: uiViewController)
-        } else {
-            print("No ad to present")
-        }
-    }
-}
 struct MainView: View {
-   // @StateObject private var interstitialAdViewControllerWrapper = InterstitialAdViewControllerWrapper()
+
     @ObservedObject var vm = MainViewModel()
     @State private var showUnlock = false
     @State private var didUnlock = false
@@ -43,10 +22,7 @@ struct MainView: View {
     @State private var showSettingsMenu = false
     @State private var petCount = 0
     @ObservedObject private var vpnManager = VpnManager()
-    @State private var isShowingInterstitial = false
-    @State private var isShowingAd: Bool = false
-   // @StateObject var interstitialAdViewControllerWrapper = InterstitialAdViewControllerWrapper()
-    @State private var isAdLoaded: Bool = false
+
 
     var body: some View {
         NavigationView {
@@ -165,43 +141,58 @@ struct MainView: View {
                             }
                             .padding()
                             .animation(.easeInOut, value: showCountryPicker)
-
-                            if showUnlock {
-                                SwipeToUnlockView()
-                                    .onSwipeSuccess {
-                                        self.didUnlock = true
-                                        self.showUnlock = false
-                                        showLoading = true
-                                        vpnManager.turnOnTunnel { bool in
-                                            print(bool)
-                                        }
-                                    }
-                                    .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
-                            }
                             
-                            Button("Show Ad") {
-                                                if isAdLoaded {
-                                                    print("Ad is ready to be shown")
-                                                    isShowingAd = true
-                                                } else {
-                                                    print("Ad is not loaded yet")
-                                                }
-                                isShowingAd = true
+                            Spacer()
+                            
+                            VStack{
+                                
+                                if showUnlock {
+                                    SwipeToUnlockView()
+                                        .onSwipeSuccess {
+                                            self.didUnlock = true
+                                            self.showUnlock = false
+                                            showLoading = true
+                                            //тут должно быть подкючение к ремламе
+                                            showLoading = false
+                                            //тут должна быть обратботка закрытия рекламы
+                                            vpnManager.turnOnTunnel { bool in
+                                                print(bool)
                                             }
-                                            .padding()
-                                            .sheet(isPresented: $isShowingAd) {
-                                                InterstitialAdViewControllerWrapper()
-                                            }
-                                            .ignoresSafeArea()
-                        
-                            if showLoading { LoadingView() }
-                            if didUnlock {
-                                Button {
-                                    vpnManager.turnOffTunnel()
-                                    self.didUnlock = false
-                                    self.showUnlock = true
-                                } label: {
-                                    Text("Disconnect")
+                                        }
+                                        .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
+                                }
+                                
+                                
+                                if didUnlock {
+                                    Button {
+                                        vpnManager.turnOffTunnel()
+                                        self.didUnlock = false
+                                        self.showUnlock = true
+                                    } label: {
+                                        Text("Disconnect")
+                                            .font(.system(size: 19, weight: .medium))
+                                            .foregroundColor(.white)
+                                            .padding(.vertical, 10)
+                                            .padding(.horizontal)
+                                            .background(
+                                                LinearGradient(
+                                                    stops: [
+                                                        Gradient.Stop(color: Color(red: 1, green: 0, blue: 0.9), location: 0),
+                                                        Gradient.Stop(color: Color(red: 1, green: 1, blue: 1).opacity(0.68), location: 0.57),
+                                                        Gradient.Stop(color: Color(red: 0.47, green: 0.47, blue: 0.47).opacity(0.36), location: 0.95),
+                                                    ],
+                                                    startPoint: UnitPoint(x: 0.5, y: -0.91),
+                                                    endPoint: UnitPoint(x: 0.5, y: 3.36)
+                                                )
+                                            )
+                                            .cornerRadius(26)
+                                            .shadow(color: Color(red: 0, green: 0, blue: 0).opacity(0.25), radius: 2, x: 4, y: 8)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 26)
+                                                    .inset(by: 0.5)
+                                                    .stroke(Color(red: 1, green: 1, blue: 1), lineWidth: 1)
+                                            )
+                                    }
                                 }
                             }
 
@@ -211,20 +202,15 @@ struct MainView: View {
                         .onAppear {
                             vm.fetchCurrentUserEmail()
                             vm.checkEmailVerification()
-                            NotificationCenter.default.addObserver(forName: NSNotification.Name("AdLoaded"), object: nil, queue: .main) { _ in
-                                self.isAdLoaded = true
-                                print("Ad is loaded notification received")
-                            }
+                            loadSelectedCountry() //загружаем страну
                         }
                     }
                     .frame(width: UIScreen.main.bounds.width - (showSettingsMenu ? 240 : 0))
                     .offset(x: showSettingsMenu ? 130 : 0)
                 }
                 .onChange(of: selectedCountry) { newCountry in
+                    saveSelectedCountry(newCountry) // сохраняем страну
                     if newCountry != nil {
-//                        self.showSelectedCountry = selectedCountry
-//                        
-//                        UserDefaults.standard.set(self.showSelectedCountry, forKey: "showSelectedCountry")
                         showUnlock = true
                     } else {
                         showUnlock = false
@@ -239,6 +225,22 @@ struct MainView: View {
             }
         }
     }
+    private func saveSelectedCountry(_ country: Country?) {
+           if let country = country {
+               let data = try? JSONEncoder().encode(country)
+               UserDefaults.standard.set(data, forKey: "selectedCountry")
+           } else {
+               UserDefaults.standard.removeObject(forKey: "selectedCountry")
+           }
+       }
+
+       // Функция для загрузки выбранной страны из UserDefaults
+       private func loadSelectedCountry() {
+           if let data = UserDefaults.standard.data(forKey: "selectedCountry"),
+              let country = try? JSONDecoder().decode(Country.self, from: data) {
+               self.selectedCountry = country
+           }
+       }
 }
 
 struct MainView_Previews: PreviewProvider {
