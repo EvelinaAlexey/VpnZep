@@ -11,10 +11,13 @@
 		8B7013702C261ED300BACE0B /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */; };
 		8B7013742C261F3400BACE0B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */; };
 		8B70138C2C262CDD00BACE0B /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70138B2C262CDD00BACE0B /* KeychainService.swift */; };
+		8BC41F832C343E03000CFE75 /* GRDWireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BC41F822C343E03000CFE75 /* GRDWireGuardKit */; };
+		8BC41F852C343E1D000CFE75 /* GRDWireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BC41F842C343E1D000CFE75 /* GRDWireGuardKit */; };
+		8BC41F872C343E32000CFE75 /* String+ArrayConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC41F862C343E32000CFE75 /* String+ArrayConversion.swift */; };
+		8BC41F892C343E43000CFE75 /* TunnelConfiguration+WgQuickConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC41F882C343E43000CFE75 /* TunnelConfiguration+WgQuickConfig.swift */; };
 		8BED4E9F2C27682500E6944B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B70137D2C2627F000BACE0B /* NetworkExtension.framework */; };
 		8BED4EA22C27682500E6944B /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED4EA12C27682500E6944B /* PacketTunnelProvider.swift */; };
 		8BED4EA72C27682500E6944B /* VpnTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8BED4E9E2C27682500E6944B /* VpnTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8BFF8BC82C2788C1008C703A /* AVVPNService in Frameworks */ = {isa = PBXBuildFile; productRef = 8BFF8BC72C2788C1008C703A /* AVVPNService */; };
 		FD1E92342C2EF33300469BDE /* YandexMobileAdsPackage in Frameworks */ = {isa = PBXBuildFile; productRef = FD1E92332C2EF33300469BDE /* YandexMobileAdsPackage */; };
 		FD1E923A2C2EFC0300469BDE /* MobileAdsBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FD1E92392C2EFC0200469BDE /* MobileAdsBundle.bundle */; };
 		FD1E923C2C2F060C00469BDE /* InterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E923B2C2F060C00469BDE /* InterstitialViewController.swift */; };
@@ -118,6 +121,8 @@
 		8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		8B70137D2C2627F000BACE0B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		8B70138B2C262CDD00BACE0B /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		8BC41F862C343E32000CFE75 /* String+ArrayConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ArrayConversion.swift"; sourceTree = "<group>"; };
+		8BC41F882C343E43000CFE75 /* TunnelConfiguration+WgQuickConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TunnelConfiguration+WgQuickConfig.swift"; sourceTree = "<group>"; };
 		8BED4E9E2C27682500E6944B /* VpnTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VpnTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BED4EA12C27682500E6944B /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		8BED4EA32C27682500E6944B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC41F832C343E03000CFE75 /* GRDWireGuardKit in Frameworks */,
 				8BED4E9F2C27682500E6944B /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,7 +198,6 @@
 				FD8AD8E72C2440DF008C4FCB /* FirebaseRemoteConfig in Frameworks */,
 				FD8AD8C32C2440DF008C4FCB /* FirebaseAppDistribution-Beta in Frameworks */,
 				FD8AD8C72C2440DF008C4FCB /* FirebaseAuthCombine-Community in Frameworks */,
-				8BFF8BC82C2788C1008C703A /* AVVPNService in Frameworks */,
 				FD8AD8E52C2440DF008C4FCB /* FirebasePerformance in Frameworks */,
 				FD8AD8DD2C2440DF008C4FCB /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				FD8AD8EB2C2440DF008C4FCB /* FirebaseStorage in Frameworks */,
@@ -201,6 +206,7 @@
 				FD8AD8EF2C2440DF008C4FCB /* FirebaseVertexAI-Preview in Frameworks */,
 				FD8AD8D32C2440DF008C4FCB /* FirebaseFirestoreCombine-Community in Frameworks */,
 				FD8AD8E32C2440DF008C4FCB /* FirebaseMessaging in Frameworks */,
+				8BC41F852C343E1D000CFE75 /* GRDWireGuardKit in Frameworks */,
 				FD8AD8DF2C2440DF008C4FCB /* FirebaseInstallations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				8BED4EA12C27682500E6944B /* PacketTunnelProvider.swift */,
+				8BC41F862C343E32000CFE75 /* String+ArrayConversion.swift */,
+				8BC41F882C343E43000CFE75 /* TunnelConfiguration+WgQuickConfig.swift */,
 				8BED4EA32C27682500E6944B /* Info.plist */,
 				8BED4EA42C27682500E6944B /* VpnTunnel.entitlements */,
 			);
@@ -381,6 +389,9 @@
 			dependencies = (
 			);
 			name = VpnTunnel;
+			packageProductDependencies = (
+				8BC41F822C343E03000CFE75 /* GRDWireGuardKit */,
+			);
 			productName = VpnTunnel;
 			productReference = 8BED4E9E2C27682500E6944B /* VpnTunnel.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -431,8 +442,8 @@
 				FD8AD8EE2C2440DF008C4FCB /* FirebaseVertexAI-Preview */,
 				FD8AD8F02C2441F6008C4FCB /* GoogleSignIn */,
 				FD8AD8F22C2441F6008C4FCB /* GoogleSignInSwift */,
-				8BFF8BC72C2788C1008C703A /* AVVPNService */,
 				FD1E92332C2EF33300469BDE /* YandexMobileAdsPackage */,
+				8BC41F842C343E1D000CFE75 /* GRDWireGuardKit */,
 			);
 			productName = VpnZep;
 			productReference = FD8AD85D2C243C3F008C4FCB /* VpnZep.app */;
@@ -513,8 +524,8 @@
 			packageReferences = (
 				FD8AD8B12C243CF2008C4FCB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				FD8AD8B22C243D2D008C4FCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				8BFF8BC62C2788C1008C703A /* XCRemoteSwiftPackageReference "AVVPNService" */,
 				FD1E92322C2EF33300469BDE /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */,
+				8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */,
 			);
 			productRefGroup = FD8AD85E2C243C3F008C4FCB /* Products */;
 			projectDirPath = "";
@@ -570,6 +581,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC41F892C343E43000CFE75 /* TunnelConfiguration+WgQuickConfig.swift in Sources */,
+				8BC41F872C343E32000CFE75 /* String+ArrayConversion.swift in Sources */,
 				8BED4EA22C27682500E6944B /* PacketTunnelProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1046,12 +1059,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8BFF8BC62C2788C1008C703A /* XCRemoteSwiftPackageReference "AVVPNService" */ = {
+		8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AndreVasilev/AVVPNService.git";
+			repositoryURL = "https://github.com/GuardianFirewall/GuardianWireGuard";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.4;
+				minimumVersion = 1.0.0;
 			};
 		};
 		FD1E92322C2EF33300469BDE /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */ = {
@@ -1081,10 +1094,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8BFF8BC72C2788C1008C703A /* AVVPNService */ = {
+		8BC41F822C343E03000CFE75 /* GRDWireGuardKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8BFF8BC62C2788C1008C703A /* XCRemoteSwiftPackageReference "AVVPNService" */;
-			productName = AVVPNService;
+			package = 8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */;
+			productName = GRDWireGuardKit;
+		};
+		8BC41F842C343E1D000CFE75 /* GRDWireGuardKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */;
+			productName = GRDWireGuardKit;
 		};
 		FD1E92332C2EF33300469BDE /* YandexMobileAdsPackage */ = {
 			isa = XCSwiftPackageProductDependency;

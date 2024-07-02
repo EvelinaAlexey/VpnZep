@@ -7,87 +7,108 @@
 
 import Foundation
 import NetworkExtension
-import AVVPNService
 
-//class VPN: ObservableObject {
-//    
-//    let vpnManager = NEVPNManager.shared();
-//    
-//    private var vpnLoadHandler: (Error?) -> Void { return
-//        { (error:Error?) in
-//            if ((error) != nil) {
-//                print("Could not load VPN Configurations")
-//                return;
-//            }
-//            let p = NEVPNProtocolIPSec()
-//            p.username = "vpn"
-//            p.serverAddress = "219.100.37.82"
-//            p.authenticationMethod = NEVPNIKEAuthenticationMethod.sharedSecret
-//            
-//            
-//            let kcs = KeychainService();
-//            kcs.save(key: "SHARED", value: "vpn")
-//            kcs.save(key: "VPN_PASSWORD", value: "vpn")
-//            p.sharedSecretReference = kcs.load(key: "SHARED")
-//            p.passwordReference = kcs.load(key: "VPN_PASSWORD")
-//            p.useExtendedAuthentication = true
-//            p.disconnectOnSleep = false
-//            self.vpnManager.protocolConfiguration = p
-//            self.vpnManager.localizedDescription = "VPN ZEP"
-//            self.vpnManager.isEnabled = true
-//            self.vpnManager.saveToPreferences(completionHandler: self.vpnSaveHandler)
-//        } }
-//    
-//    private var vpnSaveHandler: (Error?) -> Void { return
-//        { (error:Error?) in
-//            if (error != nil) {
-//                print("Could not save VPN Configurations")
-//                return
-//            } else {
-//                do {
-//                    try self.vpnManager.connection.startVPNTunnel()
-//                } catch let error {
-//                    print("Error starting VPN Connection \(error.localizedDescription)");
-//                }
-//            }
-//        }
-//        //        self.vpnlock = false
-//    }
-//    
-//    func connectVPN() {
-//        //For no known reason the process of saving/loading the VPN configurations fails.On the 2nd time it works
-//        do {
-//            try self.vpnManager.loadFromPreferences(completionHandler: self.vpnLoadHandler)
-//        } catch let error {
-//            print("Could not start VPN Connection: \(error.localizedDescription)" )
-//        }
-//    }
-//    
-//    func disconnectVPN() ->Void {
-//        vpnManager.connection.stopVPNTunnel()
-//    }
-//}
-
-class VPN: ObservableObject {
-
-    let credentials = AVVPNCredentials.IPSec(server: "62.133.35.246", username: "vpn", password: "vpn", shared: "vpn")
+class VpnManager: ObservableObject {
     
-    // Connect
-    func connectVPN() {
-        AVVPNService.shared.connect(credentials: credentials) { error in
-            // Handle error
+    
+    func turnOnTunnel(completionHandler: @escaping (Bool) -> Void) {
+            // We use loadAllFromPreferences to see if this app has already added a tunnel
+            // to iOS Settings or (macOS Preferences)
+            NETunnelProviderManager.loadAllFromPreferences { tunnelManagersInSettings, error in
+                if let error = error {
+                    NSLog("Error (loadAllFromPreferences): \(error)")
+                    completionHandler(false)
+                    return
+                }
+
+                // If the app has already added a tunnel to Settings, we are going to modify that.
+                // If not, we create a new instance and save that to Settings.
+                // We will always have either 0 or 1 tunnel only in Settings for this app.
+                let preExistingTunnelManager = tunnelManagersInSettings?.first
+                let tunnelManager = preExistingTunnelManager ?? NETunnelProviderManager()
+
+                // Configure the custom VPN protocol
+                let protocolConfiguration = NETunnelProviderProtocol()
+
+                // Set the tunnel extension's bundle id
+                protocolConfiguration.providerBundleIdentifier = "evelina.qkwkqkqkq.networkex"
+
+                // Set the server address as a non-nil string.
+                // It would be good to provide the server's domain name or IP address.
+                protocolConfiguration.serverAddress = "31.128.42.215"
+
+                let wgQuickConfig = """
+                [Interface]
+                PrivateKey = OMDJdvRLIuqpbkrTh45GMCuudX3s4H+Ez8pus+jWCGw=
+                Address = 10.66.66.2/32, fd42:42:42::2/128
+                DNS = 1.1.1.1, 1.0.0.1
+
+                [Peer]
+                PublicKey = muo7ufSNtsg7pI+Q5+hef6WdVz3lWceDboe5jkkdN0s=
+                PresharedKey = CYK9i6PBe6t9Ghi5qMEV92WI0KukPerniaLwbcYAOug=
+                AllowedIPs = 0.0.0.0/0, ::/0
+                Endpoint = 31.128.42.215:55375
+                """
+
+                protocolConfiguration.providerConfiguration = [
+                    "wgQuickConfig": wgQuickConfig
+                ]
+
+                tunnelManager.protocolConfiguration = protocolConfiguration
+                tunnelManager.isEnabled = true
+
+                // Save the tunnel to preferences.
+                // This would modify the existing tunnel, or create a new one.
+                tunnelManager.saveToPreferences { error in
+                    if let error = error {
+                        NSLog("Error (saveToPreferences): \(error)")
+                        completionHandler(false)
+                        return
+                    }
+                    // Load it back so we have a valid usable instance.
+                    tunnelManager.loadFromPreferences { error in
+                        if let error = error {
+                            NSLog("Error (loadFromPreferences): \(error)")
+                            completionHandler(false)
+                            return
+                        }
+
+                        // At this point, the tunnel is configured.
+                        // Attempt to start the tunnel
+                        do {
+                            NSLog("Starting the tunnel")
+                            guard let session = tunnelManager.connection as? NETunnelProviderSession else {
+                                fatalError("tunnelManager.connection is invalid")
+                            }
+                            try session.startTunnel()
+                        } catch {
+                            NSLog("Error (startTunnel): \(error)")
+                            completionHandler(false)
+                        }
+                        completionHandler(true)
+                    }
+                }
+            }
         }
-    }
-    
-    func disconnectVPN() {
-        AVVPNService.shared.disconnect()
-    }
-    
-    func removeConfiguration() {
-        AVVPNService.shared.removeConfiguration()
-    }
-    
-    func aa() {
-        AVVPNService.shared.vpnManager.isEnabled.toggle()
-    }
+
+        func turnOffTunnel() {
+            NETunnelProviderManager.loadAllFromPreferences { tunnelManagersInSettings, error in
+                if let error = error {
+                    NSLog("Error (loadAllFromPreferences): \(error)")
+                    return
+                }
+                if let tunnelManager = tunnelManagersInSettings?.first {
+                    guard let session = tunnelManager.connection as? NETunnelProviderSession else {
+                        fatalError("tunnelManager.connection is invalid")
+                    }
+                    switch session.status {
+                    case .connected, .connecting, .reasserting:
+                        NSLog("Stopping the tunnel")
+                        session.stopTunnel()
+                    default:
+                        break
+                    }
+                }
+            }
+        }
 }

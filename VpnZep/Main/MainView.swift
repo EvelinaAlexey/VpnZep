@@ -56,7 +56,7 @@ struct MainView: View {
     @State private var showCountryPicker = false
     @State private var showSettingsMenu = false
     @State private var petCount = 0
-    @ObservedObject private var vpnVm = VPN()
+    @ObservedObject private var vpnManager = VpnManager()
     @State private var isShowingInterstitial = false
     @State private var showAd = false
    // @State private var interstitialViewController = InterstitialViewController()
@@ -186,7 +186,9 @@ struct MainView: View {
                                         self.didUnlock = true
                                         self.showUnlock = false
                                         showLoading = true
-                                        vpnVm.connectVPN()
+                                        vpnManager.turnOnTunnel { bool in
+                                            print(bool)
+                                        }
                                     }
                                     .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                             }
