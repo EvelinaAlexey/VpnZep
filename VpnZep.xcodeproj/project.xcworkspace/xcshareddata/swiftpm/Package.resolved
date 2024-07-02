@@ -1,5 +1,5 @@
 {
-  "originHash" : "a161cf25a5c0d54cbdb888111d5b477b86d48834b4459c791b96fcd0cf2563ce",
+  "originHash" : "9b2e93a75a2289e5d7c1839d885b38bb40fa8c4d10665226257a1a87a5a76c58",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -35,15 +35,6 @@
       "state" : {
         "revision" : "3b74ab028f448b0342f908245f19f6a9f4563b97",
         "version" : "5.6.0"
-      }
-    },
-    {
-      "identity" : "avvpnservice",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AndreVasilev/AVVPNService.git",
-      "state" : {
-        "revision" : "2e3e86b0649ac6624e7d7b829fd2d88c29d75dff",
-        "version" : "0.1.4"
       }
     },
     {
@@ -125,6 +116,15 @@
       "state" : {
         "revision" : "5d7d66f647400952b1758b230e019b07c0b4b22a",
         "version" : "4.1.1"
+      }
+    },
+    {
+      "identity" : "guardianwireguard",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/GuardianFirewall/GuardianWireGuard",
+      "state" : {
+        "revision" : "9246363c89fefd48d95e805d6465273c1a843c2c",
+        "version" : "1.0.0"
       }
     },
     {
