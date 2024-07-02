@@ -53,6 +53,8 @@ struct MainView: View {
     @State private var didUnlock = false
     @State private var showLoading = false
     @State private var selectedCountry: Country?
+    @State var showSelectedCountry = UserDefaults.standard.value(forKey: "showSelectedCountry")
+
     @State private var showCountryPicker = false
     @State private var showSettingsMenu = false
     @State private var petCount = 0
@@ -202,13 +204,15 @@ struct MainView: View {
                                             .ignoresSafeArea()
 
                             if showLoading { LoadingView() }
-//                            if didUnlock {
-//                                Button {
-//                                    vpnManager.turnOffTunnel()
-//                                } label: {
-//                                    Text("Disconnect")
-//                                }
-//                            }
+                            if didUnlock {
+                                Button {
+                                    vpnManager.turnOffTunnel()
+                                    self.didUnlock = false
+                                    self.showUnlock = true
+                                } label: {
+                                    Text("Disconnect")
+                                }
+                            }
 
                             Spacer()
                         }
@@ -224,6 +228,9 @@ struct MainView: View {
                 }
                 .onChange(of: selectedCountry) { newCountry in
                     if newCountry != nil {
+//                        self.showSelectedCountry = selectedCountry
+//                        
+//                        UserDefaults.standard.set(self.showSelectedCountry, forKey: "showSelectedCountry")
                         showUnlock = true
                     } else {
                         showUnlock = false

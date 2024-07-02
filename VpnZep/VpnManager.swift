@@ -35,19 +35,19 @@ class VpnManager: ObservableObject {
 
                 // Set the server address as a non-nil string.
                 // It would be good to provide the server's domain name or IP address.
-                protocolConfiguration.serverAddress = "31.128.42.215"
+                protocolConfiguration.serverAddress = "45.159.248.107"
 
                 let wgQuickConfig = """
                 [Interface]
-                PrivateKey = OMDJdvRLIuqpbkrTh45GMCuudX3s4H+Ez8pus+jWCGw=
+                PrivateKey = WGqc9sgZCHYCSNHVTqnjvZ1UWoRRdu1F4I4CQtFsKnQ=
                 Address = 10.66.66.2/32, fd42:42:42::2/128
                 DNS = 1.1.1.1, 1.0.0.1
 
                 [Peer]
-                PublicKey = muo7ufSNtsg7pI+Q5+hef6WdVz3lWceDboe5jkkdN0s=
-                PresharedKey = CYK9i6PBe6t9Ghi5qMEV92WI0KukPerniaLwbcYAOug=
+                PublicKey = 3GrOFlbtremcYumH247xNkkztVBAKg3AGXVWHc7kIWk=
+                PresharedKey = N5ivPWXzNZ8UiQwBf/USf3FwmcpxGytCyTTIYrnj+vE=
+                Endpoint = 45.159.248.107:53943
                 AllowedIPs = 0.0.0.0/0, ::/0
-                Endpoint = 31.128.42.215:55375
                 """
 
                 protocolConfiguration.providerConfiguration = [
