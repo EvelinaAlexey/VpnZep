@@ -7,47 +7,31 @@
 
 import SwiftUI
 import YandexMobileAds
+import UIKit
 
-struct InterstitialAdView: UIViewControllerRepresentable {
-    @Binding var showAd: Bool
+struct InterstitialAdViewControllerWrapper: UIViewControllerRepresentable {
+    typealias UIViewControllerType = InterstitialAdViewController
 
-    class Coordinator {
-        var parent: InterstitialAdView
-        var viewController: InterstitialAdViewController?
-
-        init(parent: InterstitialAdView) {
-            self.parent = parent
-        }
-
-        func loadAd() {
-            viewController?.loadAd()
-        }
-
-        func presentAd() {
-            viewController?.presentAd()
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self)
-    }
+    @StateObject var interstitialAdViewController = InterstitialAdViewController()
 
     func makeUIViewController(context: Context) -> InterstitialAdViewController {
-        let viewController = InterstitialAdViewController()
-        context.coordinator.viewController = viewController
-        return viewController
+        print("Creating InterstitialAdViewController")
+        interstitialAdViewController.loadAd()
+        return interstitialAdViewController
     }
 
     func updateUIViewController(_ uiViewController: InterstitialAdViewController, context: Context) {
-        if showAd {
-            context.coordinator.presentAd()
-            showAd = false
+        print("Updating InterstitialAdViewController")
+        if let interstitialAd = uiViewController.interstitialAd {
+            print("Presenting the ad")
+            interstitialAd.show(from: uiViewController)
+        } else {
+            print("No ad to present")
         }
     }
 }
-
-
 struct MainView: View {
+   // @StateObject private var interstitialAdViewControllerWrapper = InterstitialAdViewControllerWrapper()
     @ObservedObject var vm = MainViewModel()
     @State private var showUnlock = false
     @State private var didUnlock = false
@@ -58,9 +42,9 @@ struct MainView: View {
     @State private var petCount = 0
     @ObservedObject private var vpnVm = VPN()
     @State private var isShowingInterstitial = false
-    @State private var showAd = false
-   // @State private var interstitialViewController = InterstitialViewController()
-
+    @State private var isShowingAd: Bool = false
+   // @StateObject var interstitialAdViewControllerWrapper = InterstitialAdViewControllerWrapper()
+    @State private var isAdLoaded: Bool = false
 
     var body: some View {
         NavigationView {
@@ -192,13 +176,20 @@ struct MainView: View {
                             }
                             
                             Button("Show Ad") {
-                                print("Button pressed")
-                                            showAd = true
-                                        }
-                                        .padding()
-                                        InterstitialAdView(showAd: $showAd)
+                                                if isAdLoaded {
+                                                    print("Ad is ready to be shown")
+                                                    isShowingAd = true
+                                                } else {
+                                                    print("Ad is not loaded yet")
+                                                }
+                                isShowingAd = true
+                                            }
+                                            .padding()
+                                            .sheet(isPresented: $isShowingAd) {
+                                                InterstitialAdViewControllerWrapper()
+                                            }
                                             .ignoresSafeArea()
-
+                        
                             if showLoading { LoadingView() }
 
                             Spacer()
@@ -207,7 +198,10 @@ struct MainView: View {
                         .onAppear {
                             vm.fetchCurrentUserEmail()
                             vm.checkEmailVerification()
-                            
+                            NotificationCenter.default.addObserver(forName: NSNotification.Name("AdLoaded"), object: nil, queue: .main) { _ in
+                                self.isAdLoaded = true
+                                print("Ad is loaded notification received")
+                            }
                         }
                     }
                     .frame(width: UIScreen.main.bounds.width - (showSettingsMenu ? 240 : 0))
