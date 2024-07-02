@@ -1,6 +1,6 @@
 //
 //  TunnelConfiguration+WgQuickConfig.swift
-//  VpnTunnel
+//  TunnelExtension
 //
 //  Created by Developer on 02.07.2024.
 //

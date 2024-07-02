@@ -31,7 +31,7 @@ class VpnManager: ObservableObject {
                 let protocolConfiguration = NETunnelProviderProtocol()
 
                 // Set the tunnel extension's bundle id
-                protocolConfiguration.providerBundleIdentifier = "EvelinaAlexey.VpnZep.VpnTunnel"
+                protocolConfiguration.providerBundleIdentifier = "EvelinaAlexey.VpnZep.TunnelExtension"
 
                 // Set the server address as a non-nil string.
                 // It would be good to provide the server's domain name or IP address.

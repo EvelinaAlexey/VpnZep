@@ -202,6 +202,13 @@ struct MainView: View {
                                             .ignoresSafeArea()
 
                             if showLoading { LoadingView() }
+//                            if didUnlock {
+//                                Button {
+//                                    vpnManager.turnOffTunnel()
+//                                } label: {
+//                                    Text("Disconnect")
+//                                }
+//                            }
 
                             Spacer()
                         }
