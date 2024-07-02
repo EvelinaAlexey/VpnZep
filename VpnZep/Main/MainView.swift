@@ -22,6 +22,7 @@ struct MainView: View {
     @State private var showSettingsMenu = false
     @State private var petCount = 0
     @ObservedObject private var vpnManager = VpnManager()
+    @State private var availible = true
 
 
     var body: some View {
@@ -126,7 +127,7 @@ struct MainView: View {
                                                         .stroke(Color.white, lineWidth: 1)
                                                 )
                                         }
-                                    }
+                                    }.disabled(availible == false)
                                 }
 
                                 if showCountryPicker {
@@ -149,14 +150,18 @@ struct MainView: View {
                                 if showUnlock {
                                     SwipeToUnlockView()
                                         .onSwipeSuccess {
-                                            self.didUnlock = true
-                                            self.showUnlock = false
+                                            withAnimation(.spring()) {
+                                               self.didUnlock = true
+                                               self.showUnlock = false
+                                           }
                                             showLoading = true
                                             //тут должно быть подкючение к ремламе
                                             showLoading = false
                                             //тут должна быть обратботка закрытия рекламы
                                             vpnManager.turnOnTunnel { bool in
                                                 print(bool)
+                                                
+                                                availible = false
                                             }
                                         }
                                         .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
@@ -165,9 +170,12 @@ struct MainView: View {
                                 
                                 if didUnlock {
                                     Button {
-                                        vpnManager.turnOffTunnel()
-                                        self.didUnlock = false
-                                        self.showUnlock = true
+                                        withAnimation(.spring()) {
+                                           vpnManager.turnOffTunnel()
+                                           self.didUnlock = false
+                                           self.showUnlock = true
+                                            availible = true
+                                       }
                                     } label: {
                                         Text("Disconnect")
                                             .font(.system(size: 19, weight: .medium))
@@ -192,7 +200,7 @@ struct MainView: View {
                                             .inset(by: -0.5)
                                             .stroke(Color(red: 0.3, green: 0.14, blue: 0.57), lineWidth: 1)
                                             )
-                                    }
+                                    }.transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                                 }
                             }
 
