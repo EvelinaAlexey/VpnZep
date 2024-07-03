@@ -10,6 +10,9 @@ import NetworkExtension
 
 class VpnManager: ObservableObject {
     
+    @Published var wgQuickConfig: String = """
+"""
+    
     
     func turnOnTunnel(completionHandler: @escaping (Bool) -> Void) {
             // We use loadAllFromPreferences to see if this app has already added a tunnel
@@ -37,21 +40,10 @@ class VpnManager: ObservableObject {
                 // It would be good to provide the server's domain name or IP address.
                 protocolConfiguration.serverAddress = "VpnZep.net"
 
-                let wgQuickConfig = """
-                [Interface]
-                PrivateKey = iIMOLUQ41WcC6wif7W+WU45XdOZPZhK/PJy6qn7/ZWU=
-                Address = 10.66.66.2/32,fd42:42:42::2/128
-                DNS = 1.1.1.1,1.0.0.1
-
-                [Peer]
-                PublicKey = DaQ/PgPGoXk5z5xDK+yO00Ry1MAvmrHgu3rHOTPDzAo=
-                PresharedKey = fnyiJDJ4zK8V3O0P+hmDG9Rxf6Oq8jzc6vPcvuFF9ho=
-                Endpoint = 45.159.248.107:61056
-                AllowedIPs = 0.0.0.0/0,::/0
-                """
+//                let wgQuickConfig = self.config
 
                 protocolConfiguration.providerConfiguration = [
-                    "wgQuickConfig": wgQuickConfig
+                    "wgQuickConfig": self.wgQuickConfig
                 ]
 
                 tunnelManager.protocolConfiguration = protocolConfiguration
@@ -101,6 +93,24 @@ class VpnManager: ObservableObject {
                     guard let session = tunnelManager.connection as? NETunnelProviderSession else {
                         fatalError("tunnelManager.connection is invalid")
                     }
+                    self.wgQuickConfig = ""
+                    let protocolConfiguration = NETunnelProviderProtocol()
+                    protocolConfiguration.serverAddress = "VpnZep.net"
+                    protocolConfiguration.providerConfiguration = [
+                        "wgQuickConfig": self.wgQuickConfig
+                    ]
+                    tunnelManager.protocolConfiguration = protocolConfiguration
+                    tunnelManager.isEnabled = true
+
+                    // Save the tunnel to preferences.
+                    // This would modify the existing tunnel, or create a new one.
+                    tunnelManager.saveToPreferences { error in
+                        if let error = error {
+                            NSLog("Error (saveToPreferences): \(error)")
+                            return
+                        }
+                    }
+
                     switch session.status {
                     case .connected, .connecting, .reasserting:
                         NSLog("Stopping the tunnel")
@@ -111,4 +121,27 @@ class VpnManager: ObservableObject {
                 }
             }
         }
+    
+    func downloadConfigFile() {
+        guard let configURL = URL(string: "http://45.159.248.107/wg0-client-zep.conf") else {
+            print("Invalid URL for client configuration")
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: configURL) { (data, response, error) in
+            guard let data = data, error == nil else {
+                print("Failed to download client configuration: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+
+            if let configContents = String(data: data, encoding: .utf8) {
+                DispatchQueue.main.async {
+                    self.wgQuickConfig = configContents
+                }
+            } else {
+                print("Failed to decode config file")
+            }
+        }
+        task.resume()
+    }
 }
