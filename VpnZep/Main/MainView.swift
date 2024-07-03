@@ -9,6 +9,7 @@ import SwiftUI
 import YandexMobileAds
 import UIKit
 
+
 struct MainView: View {
 
     @ObservedObject var vm = MainViewModel()

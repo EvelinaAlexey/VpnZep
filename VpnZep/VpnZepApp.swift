@@ -17,13 +17,20 @@ struct VpnZepApp: App {
     var shouldShowMainView = UserDefaults.standard.bool(forKey: "shouldShowMainView")
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
         
+
+    
     var body: some Scene {
             WindowGroup {
                 if shouldShowMainView {
-                    MainView()
+                                MainView()
                 } else {
-                    RegAuthView()
+                    if UserDefaults.standard.welcomeScreenShown {
+                        RegAuthView()
+                    } else {
+                        WelcomeView()
+                    }
                 }
+
             }
         }
 }

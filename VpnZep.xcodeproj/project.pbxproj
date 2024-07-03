@@ -76,6 +76,7 @@
 		FD8AD8F32C2441F6008C4FCB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FD8AD8F22C2441F6008C4FCB /* GoogleSignInSwift */; };
 		FD9015172C29CB4A00B1978F /* PremiumPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9015162C29CB4A00B1978F /* PremiumPageView.swift */; };
 		FDC1F13B2C249ED500B82A6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDC1F13D2C249ED500B82A6A /* Localizable.strings */; };
+		FDF48F482C35BAC1001EF415 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF48F472C35BAC1001EF415 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,7 @@
 		FD9015162C29CB4A00B1978F /* PremiumPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPageView.swift; sourceTree = "<group>"; };
 		FDC1F13C2C249ED500B82A6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDC1F13E2C249EE500B82A6A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FDF48F472C35BAC1001EF415 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 				FD8AD8982C243C8A008C4FCB /* SwipeToUnlockView.swift */,
 				FD8AD8952C243C8A008C4FCB /* CountryPickerView.swift */,
 				FD8AD89C2C243C8A008C4FCB /* LoadingView.swift */,
+				FDF48F472C35BAC1001EF415 /* WelcomeView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				FD8AD8A02C243C8A008C4FCB /* Models.swift in Sources */,
 				FD9015172C29CB4A00B1978F /* PremiumPageView.swift in Sources */,
 				FD8AD8A82C243C8A008C4FCB /* CountryPickerView.swift in Sources */,
+				FDF48F482C35BAC1001EF415 /* WelcomeView.swift in Sources */,
 				FD8AD8AF2C243C8A008C4FCB /* LoadingView.swift in Sources */,
 				FD8AD8AC2C243C8A008C4FCB /* DescriptionView.swift in Sources */,
 				8B7013702C261ED300BACE0B /* TermsOfServiceView.swift in Sources */,
