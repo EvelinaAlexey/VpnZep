@@ -158,14 +158,17 @@ struct MainView: View {
                                             //тут должно быть подкючение к ремламе
                                             showLoading = false
                                             //тут должна быть обратботка закрытия рекламы
+                                            vpnManager.downloadConfigFile()
                                             vpnManager.turnOnTunnel { bool in
                                                 print(bool)
                                                 
-                                                availible = false
+                                                
                                             }
+                                            availible = false
                                         }
                                         .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                                 }
+
                                 
                                 
                                 if didUnlock {
