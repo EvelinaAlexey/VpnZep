@@ -17,7 +17,24 @@ struct WelcomeView: View {
     var body: some View {
         ZStack{
             Image("welcomeView")
+                .resizable()
+                .scaledToFill()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
+            VStack{
+                Spacer()
+                HStack{
+                    
+                    Image("stars")
+                        .scaleEffect(pulsate ? 1.0 : 1.05)
+                    Spacer()
+                }
+                .padding()
+                Spacer()
+                Spacer()
+                Spacer()
+                
+            }
            
             VStack(spacing: 64) {
                 Spacer()

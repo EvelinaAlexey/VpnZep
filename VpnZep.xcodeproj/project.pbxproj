@@ -19,9 +19,11 @@
 		8BC41F9C2C344ED8000CFE75 /* GRDWireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BC41F9B2C344ED8000CFE75 /* GRDWireGuardKit */; };
 		8BC41F9E2C344F09000CFE75 /* String+ArrayConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC41F9D2C344F09000CFE75 /* String+ArrayConversion.swift */; };
 		8BC41FA02C344F17000CFE75 /* TunnelConfiguration+WgQuickConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC41F9F2C344F17000CFE75 /* TunnelConfiguration+WgQuickConfig.swift */; };
+		FD05128A2C39D0B000D86C0B /* PriceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0512892C39D0B000D86C0B /* PriceCardView.swift */; };
 		FD1E92342C2EF33300469BDE /* YandexMobileAdsPackage in Frameworks */ = {isa = PBXBuildFile; productRef = FD1E92332C2EF33300469BDE /* YandexMobileAdsPackage */; };
 		FD1E923A2C2EFC0300469BDE /* MobileAdsBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FD1E92392C2EFC0200469BDE /* MobileAdsBundle.bundle */; };
 		FD1E923C2C2F060C00469BDE /* InterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E923B2C2F060C00469BDE /* InterstitialViewController.swift */; };
+		FD4826C42C39B4A700AD40A5 /* benefitsCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4826C32C39B4A700AD40A5 /* benefitsCarouselView.swift */; };
 		FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */; };
 		FD8AD8652C243C40008C4FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8642C243C40008C4FCB /* Assets.xcassets */; };
 		FD8AD8692C243C40008C4FCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8AD8682C243C40008C4FCB /* Preview Assets.xcassets */; };
@@ -130,9 +132,11 @@
 		8BC41F942C344EB4000CFE75 /* TunnelExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TunnelExtension.entitlements; sourceTree = "<group>"; };
 		8BC41F9D2C344F09000CFE75 /* String+ArrayConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ArrayConversion.swift"; sourceTree = "<group>"; };
 		8BC41F9F2C344F17000CFE75 /* TunnelConfiguration+WgQuickConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TunnelConfiguration+WgQuickConfig.swift"; sourceTree = "<group>"; };
+		FD0512892C39D0B000D86C0B /* PriceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCardView.swift; sourceTree = "<group>"; };
 		FD1E92372C2EF79400469BDE /* YandexMobileAds.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EK7Z26L6D4:Yandex LLC"; lastKnownFileType = wrapper.xcframework; path = YandexMobileAds.xcframework; sourceTree = "<group>"; };
 		FD1E92392C2EFC0200469BDE /* MobileAdsBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MobileAdsBundle.bundle; path = YandexMobileAds.xcframework/MobileAdsBundle.bundle; sourceTree = "<group>"; };
 		FD1E923B2C2F060C00469BDE /* InterstitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialViewController.swift; sourceTree = "<group>"; };
+		FD4826C32C39B4A700AD40A5 /* benefitsCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = benefitsCarouselView.swift; sourceTree = "<group>"; };
 		FD8AD85D2C243C3F008C4FCB /* VpnZep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VpnZep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8AD8602C243C3F008C4FCB /* VpnZepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnZepApp.swift; sourceTree = "<group>"; };
 		FD8AD8642C243C40008C4FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 				FD8AD8992C243C8A008C4FCB /* DescriptionView.swift */,
 				8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */,
 				FD9015162C29CB4A00B1978F /* PremiumPageView.swift */,
+				FD4826C32C39B4A700AD40A5 /* benefitsCarouselView.swift */,
+				FD0512892C39D0B000D86C0B /* PriceCardView.swift */,
 			);
 			path = SettingsMenu;
 			sourceTree = "<group>";
@@ -608,9 +614,11 @@
 				FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */,
 				FD8AD8AD2C243C8A008C4FCB /* RegAuthViewModel.swift in Sources */,
 				8B6616412C2734210029F6E6 /* VpnManager.swift in Sources */,
+				FD05128A2C39D0B000D86C0B /* PriceCardView.swift in Sources */,
 				FD8AD8A92C243C8A008C4FCB /* SettingsView.swift in Sources */,
 				FD8AD8A52C243C8A008C4FCB /* RegAuthView.swift in Sources */,
 				FD8AD8AB2C243C8A008C4FCB /* SwipeToUnlockView.swift in Sources */,
+				FD4826C42C39B4A700AD40A5 /* benefitsCarouselView.swift in Sources */,
 				FD8AD8A72C243C8A008C4FCB /* GoogleView.swift in Sources */,
 				FD8AD8A02C243C8A008C4FCB /* Models.swift in Sources */,
 				FD9015172C29CB4A00B1978F /* PremiumPageView.swift in Sources */,
