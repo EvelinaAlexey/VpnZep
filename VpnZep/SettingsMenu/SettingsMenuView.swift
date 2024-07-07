@@ -143,7 +143,7 @@ struct SettingsMenuView: View {
             }
             
             .padding()
-        }
+        }.padding(.top)
             .shadow(color: Color(red: 0, green: 0, blue: 0).opacity(0.25), radius: 20, x: 21, y: 0)
             .fullScreenCover(isPresented: $showRegAuthView, onDismiss: nil) {
                 RegAuthView()

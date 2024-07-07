@@ -38,18 +38,19 @@
 "plsFerify" = "Please confirm your email before logging in";
 "succesSignUp" = "Registration successful! An email confirmation email has been sent. Please check your mailbox, including your Spam folder.";
 "notification" = "Notification";
-"priceYear" = "18$";
+"priceYear" = "19$";
 "priceMonth" = "2$";
-"priceHalfYear" = "10$";
+"priceHalfYear" = "11$";
 "perYear" = "year";
 "perHalfYear" = "6 month";
 "perMonth" = "months";
-"dontMiss" = "Don't miss";
-"ben1" = "Supports a large number of countries";
+"dontMiss" = "on the way";
+"ben1" = "Large number of countries";
 "ben2" = "Unlimited traffic";
 "ben3" = "Instant connection";
 "ben4" = "No advertising";
 "Disconnect" = "Disconnect";
  "welcome" = "Welcome to the VpnZep!";
 "get" = "Get started";
+"discount" = "discount";
 //eofr,vcedvc

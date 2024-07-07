@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+extension View {
+    func gradientForeground(colors: [Color], startPoint: UnitPoint = .leading, endPoint: UnitPoint = .trailing) -> some View {
+        self.overlay(
+            LinearGradient(
+                gradient: Gradient(colors: colors),
+                startPoint: startPoint,
+                endPoint: endPoint
+            )
+        )
+        .mask(self)
+    }
+}
+
 extension Comparable {
     func clamp<T: Comparable>(lower: T, _ upper: T) -> T {
         return min(max(self as! T, lower), upper)
@@ -62,7 +75,14 @@ struct SwipeToUnlockView: View {
                 .foregroundColor(Color.white)
                 .overlay(
                     Capsule()
-                        .stroke(Color(red: 1, green: 0, blue: 0.96), lineWidth: 4)
+                        .stroke(LinearGradient(
+                            stops: [
+                            Gradient.Stop(color: Color(red: 0, green: 1, blue: 0.76).opacity(0.66), location: 0),
+                            Gradient.Stop(color: Color(red: 0.42, green: 0, blue: 1).opacity(0.66), location: 0.85),
+                            ],
+                            startPoint: UnitPoint(x: 0, y: 0.5),
+                            endPoint: UnitPoint(x: 1, y: 0.5)
+                            ))
                          // Розовая обводка вокруг трека
                 )
                 //.blendMode(.overlay)
@@ -80,7 +100,14 @@ struct SwipeToUnlockView: View {
             ZStack {
                 Capsule()
                     .frame(width: thumbSize.width, height: thumbSize.height)
-                    .foregroundColor(Color(red: 0.5, green: 0, blue: 1)).opacity(0.66) //цвет ползунка
+                    .gradientForeground(
+                                colors: [
+                                    Color(red: 0, green: 1, blue: 0.76),
+                                    Color(red: 0.42, green: 0, blue: 1)
+                                ],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                    )
                 
                 Image(systemName: "arrow.right")
                     .foregroundColor(Color.white)
@@ -166,6 +193,6 @@ struct SwipeToUnlockView: View {
     
 }
 
-#Preview {
-    SwipeToUnlockView()
-}
+//#Preview {
+//    SwipeToUnlockView()
+//}

@@ -35,10 +35,23 @@ struct RoundedCornerShape: Shape { // 1
     }
 }
 
+struct Benefit: Identifiable {
+    let id = UUID()
+    let desc: Text
+    let cart: Image
+    
+    init(desc: Text, cart: Image) {
+        self.desc = desc
+        self.cart = cart
+    }
+}
+
 struct Country: Identifiable, Codable {
     var id = UUID()
         let name: String
     let flagName: String
+    
+    
     
     var flag: Image {
             Image(flagName)

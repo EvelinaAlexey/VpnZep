@@ -31,16 +31,11 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(
-                    stops: [
-                        Gradient.Stop(color: Color(red: 0, green: 0, blue: 0), location: 0),
-                        Gradient.Stop(color: Color(red: 0.44, green: 0, blue: 1), location: 0.55),
-                        Gradient.Stop(color: Color(red: 1, green: 1, blue: 1), location: 1),
-                    ],
-                    startPoint: UnitPoint(x: 0.5, y: -0.08),
-                    endPoint: UnitPoint(x: 0.5, y: 1.32)
-                )
-                .ignoresSafeArea()
+                Image("back")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea()
 
                 HStack(spacing: 0) {
                     if showSettingsMenu {
@@ -254,7 +249,7 @@ struct MainView: View {
                         showUnlock = false
                     }
                 }
-            }
+            }.padding(.top)
             .contentShape(Rectangle())
             .onTapGesture {
                 withAnimation {
