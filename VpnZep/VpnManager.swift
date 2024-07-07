@@ -10,6 +10,8 @@ import NetworkExtension
 
 class VpnManager: ObservableObject {
     
+
+    
     @Published var wgQuickConfig: String = """
 """
     
@@ -93,23 +95,23 @@ class VpnManager: ObservableObject {
                     guard let session = tunnelManager.connection as? NETunnelProviderSession else {
                         fatalError("tunnelManager.connection is invalid")
                     }
-                    self.wgQuickConfig = ""
-                    let protocolConfiguration = NETunnelProviderProtocol()
-                    protocolConfiguration.serverAddress = "VpnZep.net"
-                    protocolConfiguration.providerConfiguration = [
-                        "wgQuickConfig": self.wgQuickConfig
-                    ]
-                    tunnelManager.protocolConfiguration = protocolConfiguration
-                    tunnelManager.isEnabled = true
-
-                    // Save the tunnel to preferences.
-                    // This would modify the existing tunnel, or create a new one.
-                    tunnelManager.saveToPreferences { error in
-                        if let error = error {
-                            NSLog("Error (saveToPreferences): \(error)")
-                            return
-                        }
-                    }
+//                    self.wgQuickConfig = ""
+//                    let protocolConfiguration = NETunnelProviderProtocol()
+//                    protocolConfiguration.serverAddress = "VpnZep.net"
+//                    protocolConfiguration.providerConfiguration = [
+//                        "wgQuickConfig": self.wgQuickConfig
+//                    ]
+//                    tunnelManager.protocolConfiguration = protocolConfiguration
+//                    tunnelManager.isEnabled = true
+//
+//                    // Save the tunnel to preferences.
+//                    // This would modify the existing tunnel, or create a new one.
+//                    tunnelManager.saveToPreferences { error in
+//                        if let error = error {
+//                            NSLog("Error (saveToPreferences): \(error)")
+//                            return
+//                        }
+//                    }
 
                     switch session.status {
                     case .connected, .connecting, .reasserting:
@@ -122,26 +124,31 @@ class VpnManager: ObservableObject {
             }
         }
     
-    func downloadConfigFile() {
-        guard let configURL = URL(string: "http://45.159.248.107/wg0-client-zep.conf") else {
-            print("Invalid URL for client configuration")
-            return
-        }
+    func formatConfigString(_ configString: String) -> String {
+        var formattedConfig = ""
+        
+        // Удаление лишних пробелов перед началом каждой секции [Interface] или [Peer]
+        var cleanedConfig = configString.replacingOccurrences(of: " = ", with: "=")
+        cleanedConfig = cleanedConfig.replacingOccurrences(of: "  ", with: "\n")
+        
+        // Разделение конфигурации по секциям [Interface] и [Peer]
+        let components = cleanedConfig.components(separatedBy: "  ")
 
-        let task = URLSession.shared.dataTask(with: configURL) { (data, response, error) in
-            guard let data = data, error == nil else {
-                print("Failed to download client configuration: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-
-            if let configContents = String(data: data, encoding: .utf8) {
-                DispatchQueue.main.async {
-                    self.wgQuickConfig = configContents
+        for component in components {
+            // Разделение компонента на строки
+            let lines = component.components(separatedBy: " ")
+            
+            // Пропуск пустых элементов
+            for line in lines {
+                if line.isEmpty {
+                    continue
                 }
-            } else {
-                print("Failed to decode config file")
+                
+                // Добавление форматированной строки
+                formattedConfig += "\(line)\n"
             }
         }
-        task.resume()
+        wgQuickConfig = formattedConfig
+        return formattedConfig
     }
 }

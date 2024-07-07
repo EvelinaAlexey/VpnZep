@@ -13,6 +13,8 @@ import UIKit
 struct MainView: View {
 
     @ObservedObject var vm = MainViewModel()
+    @ObservedObject var configVm = ConfigsManager()
+
     @State private var showUnlock = false
     @State private var didUnlock = false
     @State private var showLoading = false
@@ -158,13 +160,26 @@ struct MainView: View {
                                             showLoading = true
                                             //тут должно быть подкючение к ремламе
                                             showLoading = false
-                                            //тут должна быть обратботка закрытия рекламы
-                                            vpnManager.downloadConfigFile()
-                                            vpnManager.turnOnTunnel { bool in
-                                                print(bool)
-                                                
-                                                
+                                            configVm.fetchRandomConfAndSetUsingToTrue { result in
+                                                switch result {
+                                                case .success(let conf):
+                                                    print("Получена случайная строка conf:")
+                                                    print(conf)
+                                                    // Делайте что-то с полученной строкой conf
+                                                    vpnManager.formatConfigString(conf.conf)
+                                                    vpnManager.turnOnTunnel { bool in
+                                                        print(bool)
+                                                    }
+                                                    
+                                                case .failure(let error):
+                                                    print("Ошибка: \(error.localizedDescription)")
+                                                    // Обработка ошибки при получении данных
+                                                }
                                             }
+                                            
+                                            //тут должна быть обратботка закрытия рекламы
+//                                            vpnManager.downloadConfigFile()
+
                                             availible = false
                                         }
                                         .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
@@ -176,6 +191,17 @@ struct MainView: View {
                                     Button {
                                         withAnimation(.spring()) {
                                            vpnManager.turnOffTunnel()
+                                            configVm.setUsingToFalse { result in
+                                                switch result {
+                                                case .success:
+                                                    print("Значение поля using успешно обновлено на false")
+                                                    // Добавьте свою логику после успешного обновления
+
+                                                case .failure(let error):
+                                                    print("Ошибка: \(error.localizedDescription)")
+                                                    // Обработка ошибки при обновлении данных
+                                                }
+                                            }
                                            self.didUnlock = false
                                            self.showUnlock = true
                                             availible = true

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B2A203E2C35A23E0028532E /* VpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A203D2C35A23E0028532E /* VpsManager.swift */; };
+		8B2A203E2C35A23E0028532E /* ConfigsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A203D2C35A23E0028532E /* ConfigsManager.swift */; };
 		8B6616412C2734210029F6E6 /* VpnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6616402C2734210029F6E6 /* VpnManager.swift */; };
 		8B7013702C261ED300BACE0B /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */; };
 		8B7013742C261F3400BACE0B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */; };
@@ -118,7 +118,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8B2A203D2C35A23E0028532E /* VpsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpsManager.swift; sourceTree = "<group>"; };
+		8B2A203D2C35A23E0028532E /* ConfigsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigsManager.swift; sourceTree = "<group>"; };
 		8B6616402C2734210029F6E6 /* VpnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnManager.swift; sourceTree = "<group>"; };
 		8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
 		8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
@@ -337,7 +337,7 @@
 				FD8AD8972C243C8A008C4FCB /* FirebaseManager.swift */,
 				8B70138B2C262CDD00BACE0B /* KeychainService.swift */,
 				8B6616402C2734210029F6E6 /* VpnManager.swift */,
-				8B2A203D2C35A23E0028532E /* VpsManager.swift */,
+				8B2A203D2C35A23E0028532E /* ConfigsManager.swift */,
 				8B70136E2C261E8C00BACE0B /* Model */,
 				8B7013752C261FFE00BACE0B /* Extensions */,
 				8B70136D2C261E3600BACE0B /* Main */,
@@ -602,7 +602,7 @@
 				8B7013742C261F3400BACE0B /* PrivacyPolicyView.swift in Sources */,
 				FD8AD8AA2C243C8A008C4FCB /* FirebaseManager.swift in Sources */,
 				FD8AD8AE2C243C8A008C4FCB /* SettingsMenuView.swift in Sources */,
-				8B2A203E2C35A23E0028532E /* VpsManager.swift in Sources */,
+				8B2A203E2C35A23E0028532E /* ConfigsManager.swift in Sources */,
 				8B70138C2C262CDD00BACE0B /* KeychainService.swift in Sources */,
 				FD8AD89F2C243C8A008C4FCB /* AppDelegate.swift in Sources */,
 				FD8AD8612C243C3F008C4FCB /* VpnZepApp.swift in Sources */,

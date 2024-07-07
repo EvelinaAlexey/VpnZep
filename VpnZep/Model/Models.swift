@@ -90,3 +90,9 @@ struct PrivacyPolicy: Identifiable, Codable {
     var name: String
     var update: String
 }
+
+struct Configs: Identifiable, Codable {
+    @DocumentID var id: String?
+    var conf: String
+    var using: Bool
+}
