@@ -65,9 +65,8 @@ struct MainView: View {
                                 }
                                 .symbolEffect(.bounce, value: petCount)
                                 Spacer()
-                            }
+                            }.padding(.bottom)
                             .padding(.leading, 30)
-                            .padding(.top, 40)
                             .offset(x: showSettingsMenu ? -130 : 0)
                             ZStack {
                                 Ellipse()
@@ -143,12 +142,13 @@ struct MainView: View {
                             .padding()
                             .animation(.easeInOut, value: showCountryPicker)
                             
-                            Spacer()
+                           
                             
                             VStack{
                                 
                                 if showUnlock {
                                     SwipeToUnlockView()
+                                    
                                         .onSwipeSuccess {
                                             withAnimation(.spring()) {
                                                self.didUnlock = true
@@ -230,10 +230,11 @@ struct MainView: View {
                                             )
                                     }.transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                                 }
-                            }
+                            }.padding(.top)
 
-                            Spacer()
+                           //Spacer()
                         }
+                        .padding(.bottom)
                         .animation(.default, value: showLoading)
                         .onAppear {
                             vm.fetchCurrentUserEmail()
@@ -252,7 +253,7 @@ struct MainView: View {
                         showUnlock = false
                     }
                 }
-            }.padding(.top)
+            }//.padding(.top)
             .contentShape(Rectangle())
             .onTapGesture {
                 withAnimation {
