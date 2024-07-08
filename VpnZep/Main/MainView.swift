@@ -14,7 +14,9 @@ struct MainView: View {
 
     @ObservedObject var vm = MainViewModel()
     @ObservedObject var configVm = ConfigsManager()
+//    @ObservedObject var adManager = AdManager()
 
+    @State private var showAds = false
     @State private var showUnlock = false
     @State private var didUnlock = false
     @State private var showLoading = false
@@ -30,6 +32,7 @@ struct MainView: View {
 
     var body: some View {
         NavigationView {
+            
             ZStack {
                 Image("back")
                     .resizable()
@@ -145,6 +148,7 @@ struct MainView: View {
                             
                             VStack{
                                 
+                                
                                 if showUnlock {
                                     SwipeToUnlockView()
                                         .onSwipeSuccess {
@@ -161,6 +165,8 @@ struct MainView: View {
                                                     print("Получена случайная строка conf:")
                                                     print(conf)
                                                     // Делайте что-то с полученной строкой conf
+                                                    showAds = true
+
                                                     vpnManager.formatConfigString(conf.conf)
                                                     vpnManager.turnOnTunnel { bool in
                                                         print(bool)
@@ -191,7 +197,7 @@ struct MainView: View {
                                                 case .success:
                                                     print("Значение поля using успешно обновлено на false")
                                                     // Добавьте свою логику после успешного обновления
-
+                                                    showAds = false
                                                 case .failure(let error):
                                                     print("Ошибка: \(error.localizedDescription)")
                                                     // Обработка ошибки при обновлении данных
@@ -241,6 +247,7 @@ struct MainView: View {
                     .frame(width: UIScreen.main.bounds.width - (showSettingsMenu ? 240 : 0))
                     .offset(x: showSettingsMenu ? 130 : 0)
                 }
+
                 .onChange(of: selectedCountry) { newCountry in
                     saveSelectedCountry(newCountry) // сохраняем страну
                     if newCountry != nil {
@@ -249,6 +256,10 @@ struct MainView: View {
                         showUnlock = false
                     }
                 }
+                if showAds {
+                    AdsView()
+                        .frame(width: 0, height: 0)
+                }
             }.padding(.top)
             .contentShape(Rectangle())
             .onTapGesture {
@@ -256,7 +267,10 @@ struct MainView: View {
                     showSettingsMenu = false
                 }
             }
+            
         }
+        
+
     }
     private func saveSelectedCountry(_ country: Country?) {
            if let country = country {

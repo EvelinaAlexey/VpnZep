@@ -11,13 +11,18 @@ import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
 import UserNotifications
+import YandexMobileAds
 
 @main
 struct VpnZepApp: App {
+    
+    init() {
+        MobileAds.setUserConsent(true)
+        MobileAds.initializeSDK()
+    }
+    
     var shouldShowMainView = UserDefaults.standard.bool(forKey: "shouldShowMainView")
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-        
-
     
     var body: some Scene {
             WindowGroup {

@@ -11,9 +11,6 @@ import FirebaseAuth
 import GoogleSignIn
 import UserNotifications
 import Firebase
-import YandexMobileAds
-import YandexMobileAdsTarget
-import YandexMobileAdsInstream
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
@@ -29,9 +26,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         // Инициализация Yandex Mobile Ads SDK
         print("Initializing Yandex Mobile Ads SDK")
-        MobileAds.initializeSDK {
-            print("Yandex Mobile Ads SDK initialized")
-        }
+
         
         // Установка делегатов
         Messaging.messaging().delegate = self
@@ -82,6 +77,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // Можно обработать ошибку регистрации здесь.
         print("Failed to register for remote notifications with error: \(error)")
     }
+    
 }
 
 extension AppDelegate: MessagingDelegate {
