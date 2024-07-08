@@ -26,7 +26,9 @@ struct MainView: View {
     @State private var petCount = 0
     @ObservedObject private var vpnManager = VpnManager()
     @State private var availible = true
-
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    
 
     var body: some View {
         NavigationView {
@@ -194,7 +196,8 @@ struct MainView: View {
 
                                                 case .failure(let error):
                                                     print("Ошибка: \(error.localizedDescription)")
-                                                    // Обработка ошибки при обновлении данных
+                                                    showAlert.toggle()
+                                                    alertMessage = "errConnection"
                                                 }
                                             }
                                            self.didUnlock = false
@@ -255,7 +258,10 @@ struct MainView: View {
                 withAnimation {
                     showSettingsMenu = false
                 }
+                
             }
+        }.alert(isPresented: $showAlert) {
+            Alert(title: Text("notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
     }
     private func saveSelectedCountry(_ country: Country?) {
