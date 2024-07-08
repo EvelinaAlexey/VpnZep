@@ -28,7 +28,9 @@ struct MainView: View {
     @State private var petCount = 0
     @ObservedObject private var vpnManager = VpnManager()
     @State private var availible = true
-
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    
 
     var body: some View {
         NavigationView {
@@ -39,7 +41,7 @@ struct MainView: View {
                     .scaledToFill()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
-
+                
                 HStack(spacing: 0) {
                     if showSettingsMenu {
                         SettingsMenuView(showSettingsMenu: $showSettingsMenu)
@@ -47,7 +49,7 @@ struct MainView: View {
                             .background(Color.white)
                             .transition(.move(edge: .leading))
                     }
-
+                    
                     ZStack {
                         VStack(spacing: 10) {
                             HStack {
@@ -66,10 +68,9 @@ struct MainView: View {
                                 }
                                 .symbolEffect(.bounce, value: petCount)
                                 Spacer()
-                            }
-                            .padding(.leading, 30)
-                            .padding(.top, 40)
-                            .offset(x: showSettingsMenu ? -130 : 0)
+                            }.padding(.bottom)
+                                .padding(.leading, 30)
+                                .offset(x: showSettingsMenu ? -130 : 0)
                             ZStack {
                                 Ellipse()
                                     .frame(width: 253, height: 253)
@@ -82,7 +83,7 @@ struct MainView: View {
                                     .font(.custom("BungeeHairline-Regular", size: 122))
                                     .foregroundColor(.white)
                             }
-
+                            
                             VStack {
                                 if !showCountryPicker {
                                     Button(action: {
@@ -130,7 +131,7 @@ struct MainView: View {
                                         }
                                     }.disabled(availible == false)
                                 }
-
+                                
                                 if showCountryPicker {
                                     CountryPickerView(selectedCountry: $selectedCountry, showCountryPicker: $showCountryPicker)
                                         .frame(width: 347, height: 209)
@@ -144,18 +145,19 @@ struct MainView: View {
                             .padding()
                             .animation(.easeInOut, value: showCountryPicker)
                             
-                            Spacer()
+                            
                             
                             VStack{
                                 
                                 
                                 if showUnlock {
                                     SwipeToUnlockView()
+                                    
                                         .onSwipeSuccess {
                                             withAnimation(.spring()) {
-                                               self.didUnlock = true
-                                               self.showUnlock = false
-                                           }
+                                                self.didUnlock = true
+                                                self.showUnlock = false
+                                            }
                                             showLoading = true
                                             //тут должно быть подкючение к ремламе
                                             showLoading = false
@@ -166,7 +168,7 @@ struct MainView: View {
                                                     print(conf)
                                                     // Делайте что-то с полученной строкой conf
                                                     showAds = true
-
+                                                    
                                                     vpnManager.formatConfigString(conf.conf)
                                                     vpnManager.turnOnTunnel { bool in
                                                         print(bool)
@@ -179,19 +181,19 @@ struct MainView: View {
                                             }
                                             
                                             //тут должна быть обратботка закрытия рекламы
-//                                            vpnManager.downloadConfigFile()
-
+                                            //                                            vpnManager.downloadConfigFile()
+                                            
                                             availible = false
                                         }
                                         .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                                 }
-
+                                
                                 
                                 
                                 if didUnlock {
                                     Button {
                                         withAnimation(.spring()) {
-                                           vpnManager.turnOffTunnel()
+                                            vpnManager.turnOffTunnel()
                                             configVm.setUsingToFalse { result in
                                                 switch result {
                                                 case .success:
@@ -200,13 +202,14 @@ struct MainView: View {
                                                     showAds = false
                                                 case .failure(let error):
                                                     print("Ошибка: \(error.localizedDescription)")
-                                                    // Обработка ошибки при обновлении данных
+                                                    showAlert.toggle()
+                                                    alertMessage = "errConnection"
                                                 }
                                             }
-                                           self.didUnlock = false
-                                           self.showUnlock = true
+                                            self.didUnlock = false
+                                            self.showUnlock = true
                                             availible = true
-                                       }
+                                        }
                                     } label: {
                                         Text("Disconnect")
                                             .font(.system(size: 19, weight: .medium))
@@ -214,29 +217,30 @@ struct MainView: View {
                                             .padding(.vertical, 14)
                                             .padding(.horizontal)
                                             .background(
-                                            LinearGradient(
-                                            stops: [
-                                            Gradient.Stop(color: Color(red: 0.49, green: 0, blue: 0.44), location: 0),
-                                            Gradient.Stop(color: Color(red: 0.55, green: 0.55, blue: 0.55).opacity(0.68), location: 0.56),
-                                            Gradient.Stop(color: Color(red: 0.47, green: 0.47, blue: 0.47).opacity(0.36), location: 0.95),
-                                            ],
-                                            startPoint: UnitPoint(x: 0.5, y: -0.91),
-                                            endPoint: UnitPoint(x: 0.5, y: 3.36)
-                                            )
+                                                LinearGradient(
+                                                    stops: [
+                                                        Gradient.Stop(color: Color(red: 0.49, green: 0, blue: 0.44), location: 0),
+                                                        Gradient.Stop(color: Color(red: 0.55, green: 0.55, blue: 0.55).opacity(0.68), location: 0.56),
+                                                        Gradient.Stop(color: Color(red: 0.47, green: 0.47, blue: 0.47).opacity(0.36), location: 0.95),
+                                                    ],
+                                                    startPoint: UnitPoint(x: 0.5, y: -0.91),
+                                                    endPoint: UnitPoint(x: 0.5, y: 3.36)
+                                                )
                                             )
                                             .cornerRadius(26)
                                             .shadow(color: Color(red: 0, green: 0, blue: 0).opacity(0.25), radius: 2, x: 4, y: 8)
                                             .overlay(
-                                            RoundedRectangle(cornerRadius: 26)
-                                            .inset(by: -0.5)
-                                            .stroke(Color(red: 0.3, green: 0.14, blue: 0.57), lineWidth: 1)
+                                                RoundedRectangle(cornerRadius: 26)
+                                                    .inset(by: -0.5)
+                                                    .stroke(Color(red: 0.3, green: 0.14, blue: 0.57), lineWidth: 1)
                                             )
                                     }.transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                                 }
-                            }
-
-                            Spacer()
+                            }.padding(.top)
+                            
+                            //Spacer()
                         }
+                        .padding(.bottom)
                         .animation(.default, value: showLoading)
                         .onAppear {
                             vm.fetchCurrentUserEmail()
@@ -247,7 +251,7 @@ struct MainView: View {
                     .frame(width: UIScreen.main.bounds.width - (showSettingsMenu ? 240 : 0))
                     .offset(x: showSettingsMenu ? 130 : 0)
                 }
-
+                
                 .onChange(of: selectedCountry) { newCountry in
                     saveSelectedCountry(newCountry) // сохраняем страну
                     if newCountry != nil {
@@ -260,17 +264,22 @@ struct MainView: View {
                     AdsView()
                         .frame(width: 0, height: 0)
                 }
+                
             }.padding(.top)
-            .contentShape(Rectangle())
-            .onTapGesture {
-                withAnimation {
-                    showSettingsMenu = false
-                }
-            }
             
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation {
+                        showSettingsMenu = false
+                    }
+                    
+                }
+        
+        }.alert(isPresented: $showAlert) {
+            Alert(title: Text("notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
         
-
+        
     }
     private func saveSelectedCountry(_ country: Country?) {
            if let country = country {

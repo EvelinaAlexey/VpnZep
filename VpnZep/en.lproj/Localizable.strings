@@ -53,4 +53,5 @@
  "welcome" = "Welcome to the VpnZep!";
 "get" = "Get started";
 "discount" = "discount";
+"errConnection" = "Unfortunately, we were unable to connect to this country. Select a different server.";
 //eofr,vcedvc
