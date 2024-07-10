@@ -13,13 +13,14 @@ struct CountryPickerView: View {
     @State private var selectedPage = 0
     
     let countries = [
-//        Country(name: "Africa", flag: Image("africa_flag")),
         Country(name: "UK", flagName: "uk_flag"),
-//        Country(name: "USA", flag: Image("usa_flag")),
-//        Country(name: "Canada", flag: Image("canada_flag")),
-//        Country(name: "Mexico", flag: Image("mexico_flag"))
+        Country(name: "France", flagName: "france_flag"),
+        Country(name: "UAE", flagName: "uae_flag"),
+        Country(name: "Austria", flagName: "austria_flag"),
+        Country(name: "German", flagName: "german_flag"),
+        Country(name: "Netherlands", flagName: "netherlands_flag"),
+        Country(name: "USA", flagName:"usa_flag")
         
-        Country(name: "France", flagName: "france_flag")
     ]
     
     var body: some View {

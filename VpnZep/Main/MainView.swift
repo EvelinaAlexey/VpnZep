@@ -159,8 +159,9 @@ struct MainView: View {
                                                 self.showUnlock = false
                                             }
                                             showLoading = true
-                                            //тут должно быть подкючение к ремламе
-                                            showLoading = false
+                                           
+                                            
+                                            
                                             configVm.fetchRandomConfAndSetUsingToTrue { result in
                                                 switch result {
                                                 case .success(let conf):
@@ -184,10 +185,14 @@ struct MainView: View {
                                             //                                            vpnManager.downloadConfigFile()
                                             
                                             availible = false
+                                            showLoading = false
                                         }
                                         .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                                 }
                                 
+                                //if Configs.using == true {
+                                    
+                               // }
                                 
                                 
                                 if didUnlock {
@@ -263,6 +268,11 @@ struct MainView: View {
                 if showAds {
                     AdsView()
                         .frame(width: 0, height: 0)
+                }
+                if showLoading {
+                    LoadingView()
+                        .transition(.opacity)
+                        .zIndex(2)
                 }
                 
             }.padding(.top)
