@@ -30,6 +30,8 @@ struct MainView: View {
     @State private var availible = true
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @EnvironmentObject var adManager: InterstitialAdManager
+
     
 
     var body: some View {
@@ -168,8 +170,10 @@ struct MainView: View {
                                                     print("Получена случайная строка conf:")
                                                     print(conf)
                                                     // Делайте что-то с полученной строкой conf
-                                                    showAds = true
-                                                    
+                                                    if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
+                                                        adManager.showAd(from: rootViewController)
+                                                    }
+
                                                     vpnManager.formatConfigString(conf.conf)
                                                     vpnManager.turnOnTunnel { bool in
                                                         print(bool)
@@ -265,6 +269,7 @@ struct MainView: View {
                         showUnlock = false
                     }
                 }
+<<<<<<< HEAD
                 if showAds {
                     AdsView()
                         .frame(width: 0, height: 0)
@@ -274,6 +279,9 @@ struct MainView: View {
                         .transition(.opacity)
                         .zIndex(2)
                 }
+=======
+
+>>>>>>> 92d2504f256bb4d8eee14db871e316b3c7e440d0
                 
             }.padding(.top)
             
@@ -288,6 +296,12 @@ struct MainView: View {
         }.alert(isPresented: $showAlert) {
             Alert(title: Text("notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
+        .onAppear {
+            if adManager.interstitialAd == nil {
+                adManager.loadAd()
+            }
+        }
+
         
         
     }

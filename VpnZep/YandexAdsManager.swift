@@ -8,55 +8,56 @@
 import Foundation
 import YandexMobileAds
 import SwiftUI
+import UIKit
 
-final class InterstitialViewController: UIViewController, InterstitialAdDelegate {
-    
-    private var interstitialAd: InterstitialAd?
-    
+class InterstitialAdManager: NSObject, ObservableObject, InterstitialAdDelegate, InterstitialAdLoaderDelegate {
+    @Published var interstitialAd: InterstitialAd?
     private lazy var interstitialAdLoader: InterstitialAdLoader = {
         let loader = InterstitialAdLoader()
         loader.delegate = self
         return loader
     }()
     
+    override init() {
+        super.init()
+        loadAd()
+    }
+    
     func loadAd() {
         let configuration = AdRequestConfiguration(adUnitID: "demo-interstitial-yandex")
         interstitialAdLoader.loadAd(with: configuration)
+        print("load ads")
     }
     
-    func showAd() {
-        interstitialAd?.show(from: self)
+    func showAd(from viewController: UIViewController) {
+        
+
+        if let ad = interstitialAd {
+            ad.show(from: viewController)
+        } else {
+            loadAd() // Загружаем новую рекламу, если текущая отсутствует
+            print("load aaa")
+
+        }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadAd()
-    }
-
-}
-
-extension InterstitialViewController: InterstitialAdLoaderDelegate {
     func interstitialAdLoader(_ adLoader: InterstitialAdLoader, didLoad interstitialAd: InterstitialAd) {
         self.interstitialAd = interstitialAd
         self.interstitialAd?.delegate = self
 
-        showAd()
     }
-//
+    
     func interstitialAdLoader(_ adLoader: InterstitialAdLoader, didFailToLoadWithError error: AdRequestError) {
-        // This method will call after getting any error while loading the ad
-        print("aaa")
-    }
-}
-
-struct AdsView: UIViewControllerRepresentable {
-    typealias UIViewControllerType = InterstitialViewController
-    func makeUIViewController(context: Context) -> InterstitialViewController {
-        return InterstitialViewController()
+        print("Failed to load ad: \(error)")
+        // Попробовать загрузить рекламу снова с задержкой
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.loadAd()
+        }
     }
     
-    func updateUIViewController(_ uiViewController: InterstitialViewController, context: Context) {
-        
+    func interstitialAdDidDismiss(_ ad: InterstitialAd) {
+        // Загружаем новую рекламу после закрытия текущей
+        loadAd()
+        print("load again")
     }
-    
 }
