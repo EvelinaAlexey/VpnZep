@@ -269,20 +269,13 @@ struct MainView: View {
                         showUnlock = false
                     }
                 }
-<<<<<<< HEAD
-                if showAds {
-                    AdsView()
-                        .frame(width: 0, height: 0)
-                }
-                if showLoading {
-                    LoadingView()
-                        .transition(.opacity)
-                        .zIndex(2)
-                }
-=======
 
->>>>>>> 92d2504f256bb4d8eee14db871e316b3c7e440d0
-                
+                if showLoading {
+                   // LoadingView()
+//                        .transition(.opacity)
+//                        .zIndex(2)
+                }
+             
             }.padding(.top)
             
                 .contentShape(Rectangle())
