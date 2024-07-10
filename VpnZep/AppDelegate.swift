@@ -16,6 +16,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    var adManager = InterstitialAdManager()
+
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -78,7 +80,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         print("Failed to register for remote notifications with error: \(error)")
     }
     
+
+    
 }
+
+
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {

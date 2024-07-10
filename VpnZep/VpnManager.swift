@@ -152,3 +152,6 @@ class VpnManager: ObservableObject {
         return formattedConfig
     }
 }
+
+
+

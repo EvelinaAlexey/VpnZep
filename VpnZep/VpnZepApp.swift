@@ -27,7 +27,9 @@ struct VpnZepApp: App {
     var body: some Scene {
             WindowGroup {
                 if shouldShowMainView {
-                                MainView()
+                    MainView()
+                        .environmentObject(appDelegate.adManager)
+
                 } else {
                     if UserDefaults.standard.welcomeScreenShown {
                         RegAuthView()
@@ -35,6 +37,8 @@ struct VpnZepApp: App {
                         WelcomeView()
                     }
                 }
+
+
 
             }
         }
