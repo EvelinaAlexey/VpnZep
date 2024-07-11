@@ -8,6 +8,7 @@
 import SwiftUI
 import YandexMobileAds
 import UIKit
+import NetworkExtension
 
 
 struct MainView: View {
@@ -31,7 +32,9 @@ struct MainView: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     @EnvironmentObject var adManager: InterstitialAdManager
-
+//    @State private var vpnStatus: NEVPNStatus = .disconnected
+//    var vpnStatus = UserDefaults.standard.bool(forKey: "vpnStatus")
+    @AppStorage("vpnStatus") private var vpnStatus: Bool = false
     
 
     var body: some View {
@@ -151,8 +154,7 @@ struct MainView: View {
                             
                             VStack{
                                 
-                                
-                                if showUnlock {
+                                if !vpnStatus {
                                     SwipeToUnlockView()
                                     
                                         .onSwipeSuccess {
@@ -199,9 +201,10 @@ struct MainView: View {
                                // }
                                 
                                 
-                                if didUnlock {
+                                if vpnStatus {
                                     Button {
                                         withAnimation(.spring()) {
+
                                             vpnManager.turnOffTunnel()
                                             configVm.setUsingToFalse { result in
                                                 switch result {

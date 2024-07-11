@@ -10,11 +10,11 @@ import NetworkExtension
 
 class VpnManager: ObservableObject {
     
-
+    var vpnStatus = UserDefaults.standard.bool(forKey: "vpnStatus")
+//    @Published var status = false
     
     @Published var wgQuickConfig: String = """
 """
-    
     
     func turnOnTunnel(completionHandler: @escaping (Bool) -> Void) {
             // We use loadAllFromPreferences to see if this app has already added a tunnel
@@ -75,6 +75,8 @@ class VpnManager: ObservableObject {
                                 fatalError("tunnelManager.connection is invalid")
                             }
                             try session.startTunnel()
+                            self.vpnStatus = true
+                            UserDefaults.standard.set(self.vpnStatus, forKey: "vpnStatus")
                         } catch {
                             NSLog("Error (startTunnel): \(error)")
                             completionHandler(false)
@@ -117,6 +119,8 @@ class VpnManager: ObservableObject {
                     case .connected, .connecting, .reasserting:
                         NSLog("Stopping the tunnel")
                         session.stopTunnel()
+                        self.vpnStatus = false
+                        UserDefaults.standard.set(self.vpnStatus, forKey: "vpnStatus")
                     default:
                         break
                     }
@@ -149,8 +153,47 @@ class VpnManager: ObservableObject {
             }
         }
         wgQuickConfig = formattedConfig
+        
         return formattedConfig
     }
+    
+//    func checkVPNStatus(notification: Notification) {
+//        guard let connection = notification.object as? NETunnelProviderSession else {
+//            return
+//        }
+//        guard let _ = connection.manager.localizedDescription else {
+//            return
+//        }
+//        
+//        self.vpnStatus = connection.status
+//        print(self.vpnStatus)
+//        
+//    }
+    
+//    func checkVPNStatus() {
+//        let manager = NEVPNManager.shared()
+//
+//        switch manager.connection.status {
+//        case .disconnected:
+//            print("VPN is disconnected")
+//            connected = false
+//        case .connecting:
+//            print("VPN is connecting")
+//        case .connected:
+//            print("VPN is connected")
+//            connected = true
+//
+//        case .reasserting:
+//            print("VPN is reconnecting")
+//        case .disconnecting:
+//            print("VPN is disconnecting")
+//        case .invalid:
+//            print("VPN is invalid")
+//        @unknown default:
+//            print("Unknown VPN status")
+//        }
+//    }
+    
 }
 
 

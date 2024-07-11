@@ -7,10 +7,13 @@
 
 import Firebase
 import FirebaseFirestoreSwift
+import SwiftUI
 
 class ConfigsManager: ObservableObject {
     let db = Firestore.firestore().collection("configs")
-    var selectedDocumentID: String?
+    var id: String?
+    @AppStorage("selectedDocumentID") private var selectedDocumentID: String = ""
+
 
     func fetchRandomConfAndSetUsingToTrue(completion: @escaping (Result<Configs, Error>) -> Void) {
         db.whereField("using", isEqualTo: false)
@@ -30,7 +33,8 @@ class ConfigsManager: ObservableObject {
                 if let randomDocument = documents.randomElement(),
                    let documentID: String? = randomDocument.documentID {
                     if let conf = randomDocument.data()["conf"] as? String {
-                        self.selectedDocumentID = documentID
+                        self.id = documentID
+                        UserDefaults.standard.set(documentID, forKey: "selectedDocumentID")
                         let docRef = self.db.document(documentID!)
                         docRef.updateData(["using": true]) { error in
                             if let error = error {
@@ -53,11 +57,12 @@ class ConfigsManager: ObservableObject {
     }
 
     func setUsingToFalse(completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let documentID = self.selectedDocumentID else {
+        id = selectedDocumentID
+        guard let documentID = self.id else {
             completion(.failure(NSError(domain: "AppErrorDomain", code: -1, userInfo: [NSLocalizedDescriptionKey: "Не выбран документ для обновления"])))
             return
         }
-
+        print(documentID)
         let docRef = self.db.document(documentID)
         docRef.updateData(["using": false]) { error in
             if let error = error {
