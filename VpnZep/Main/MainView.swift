@@ -31,10 +31,6 @@ struct MainView: View {
     @State private var availible = true
     @State private var showAlert = false
     @State private var alertMessage = ""
-    @EnvironmentObject var adManager: InterstitialAdManager
-//    @State private var vpnStatus: NEVPNStatus = .disconnected
-//    var vpnStatus = UserDefaults.standard.bool(forKey: "vpnStatus")
-    @AppStorage("vpnStatus") private var vpnStatus: Bool = false
     
 
     var body: some View {
@@ -153,8 +149,9 @@ struct MainView: View {
                             
                             
                             VStack{
+                                Text("VPN Status: \(vpnManager.vpnStatus)")
                                 
-                                if !vpnStatus {
+                                if vpnManager.vpnStatus == .disconnected {
                                     SwipeToUnlockView()
                                     
                                         .onSwipeSuccess {
@@ -166,21 +163,20 @@ struct MainView: View {
                                            
                                             
                                             
-                                            configVm.fetchRandomConfAndSetUsingToTrue { result in
+                                            configVm.fetchConfForCurrentUser() { result in
                                                 switch result {
                                                 case .success(let conf):
                                                     print("Получена случайная строка conf:")
                                                     print(conf)
                                                     // Делайте что-то с полученной строкой conf
-                                                    if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
-                                                        adManager.showAd(from: rootViewController)
-                                                    }
+//                                                    if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
+//                                                        adManager.showAd(from: rootViewController)
+//                                                    }
 
-                                                    vpnManager.formatConfigString(conf.conf)
+                                                    vpnManager.formatConfigString(conf)
                                                     vpnManager.turnOnTunnel { bool in
                                                         print(bool)
                                                     }
-                                                    
                                                 case .failure(let error):
                                                     print("Ошибка: \(error.localizedDescription)")
                                                     // Обработка ошибки при получении данных
@@ -196,32 +192,28 @@ struct MainView: View {
                                         .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                                 }
                                 
-                                //if Configs.using == true {
-                                    
-                               // }
-                                
-                                
-                                if vpnStatus {
+                     
+                                else {
                                     Button {
                                         withAnimation(.spring()) {
 
-                                            vpnManager.turnOffTunnel()
-                                            configVm.setUsingToFalse { result in
-                                                switch result {
-                                                case .success:
-                                                    print("Значение поля using успешно обновлено на false")
-                                                    // Добавьте свою логику после успешного обновления
-                                                    showAds = false
-                                                case .failure(let error):
-                                                    print("Ошибка: \(error.localizedDescription)")
-                                                    showAlert.toggle()
-                                                    alertMessage = "errConnection"
-                                                }
-                                            }
-                                            self.didUnlock = false
-                                            self.showUnlock = true
-                                            availible = true
                                         }
+//                                        configVm.setUsingToFalse { result in
+//                                            switch result {
+//                                            case .success:
+//                                                print("Значение поля using успешно обновлено на false")
+//                                                // Добавьте свою логику после успешного обновления
+//                                                //                                                    showAds = false
+//                                            case .failure(let error):
+//                                                print("Ошибка: \(error.localizedDescription)")
+//                                                showAlert.toggle()
+//                                                alertMessage = "errConnection"
+//                                            }
+//                                        }
+                                        vpnManager.turnOffTunnel()
+                                        //                                            self.didUnlock = false
+                                        //                                            self.showUnlock = true
+                                        availible = true
                                     } label: {
                                         Text("Disconnect")
                                             .font(.system(size: 19, weight: .medium))
@@ -272,12 +264,6 @@ struct MainView: View {
                         showUnlock = false
                     }
                 }
-
-                if showLoading {
-                   // LoadingView()
-//                        .transition(.opacity)
-//                        .zIndex(2)
-                }
              
             }.padding(.top)
             
@@ -288,18 +274,21 @@ struct MainView: View {
                     }
                     
                 }
-        
+//                .navigationTitle("Connection")
+//                .navigationBarHidden(true)
+
         }.alert(isPresented: $showAlert) {
             Alert(title: Text("notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
-        .onAppear {
-            if adManager.interstitialAd == nil {
-                adManager.loadAd()
-            }
-        }
-
-        
-        
+//        .onAppear {
+//            if adManager.interstitialAd == nil {
+//                adManager.loadAd()
+//            }
+//        }
+//        .onAppear {
+//            vpnManager.updateVPNStatus()
+//            
+//        }
     }
     private func saveSelectedCountry(_ country: Country?) {
            if let country = country {

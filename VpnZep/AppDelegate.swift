@@ -11,12 +11,13 @@ import FirebaseAuth
 import GoogleSignIn
 import UserNotifications
 import Firebase
+import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
-    var adManager = InterstitialAdManager()
+//    var adManager = InterstitialAdManager()
 
 
     func application(_ application: UIApplication,
@@ -29,7 +30,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // Инициализация Yandex Mobile Ads SDK
         print("Initializing Yandex Mobile Ads SDK")
 
-        
         // Установка делегатов
         Messaging.messaging().delegate = self
         
