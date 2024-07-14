@@ -15,10 +15,14 @@ import _AuthenticationServices_SwiftUI
 struct RegAuthView: View {
     
     @State private var isLoginMode = true
-    @FocusState private var isPasswordFocused: Bool
+   // @FocusState private var isPasswordFocused: Bool
     @ObservedObject var vm = MainViewModel()
     var shouldShowMainView = UserDefaults.standard.bool(forKey: "shouldShowMainView")
     @ObservedObject var raVm = RegAuthViewModel()
+    @FocusState private var isPasswordFocused: Bool
+    @FocusState private var isEmailFocused: Bool
+    
+    
     
     var body: some View {
         
@@ -54,30 +58,40 @@ struct RegAuthView: View {
                         .opacity(0)
                         
                         Group {
-                            TextField("Email", text: $raVm.email)
-                                .keyboardType(.emailAddress)
-                                .autocapitalization(.none)
-                                .focused($isPasswordFocused, equals: false)
-                                .onSubmit {
-                                    isPasswordFocused = true
-                                }
-
-                            SecureField("pswrd", text: $raVm.password)
-                                .focused($isPasswordFocused)
-                            
-                        }
-                        .multilineTextAlignment(.center)
-                        .font(.system(size: 21))
-                        .foregroundColor(.black)
-                        .frame(width: 277, height: 60)
-                        .background(Color(red: 0.85, green: 0.85, blue: 0.85))
-                        .cornerRadius(22)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 22)
-                                .inset(by: -1)
-                                .stroke(Color(red: 0.58, green: 0.03, blue: 0.62), lineWidth: 2)
-                        )
-                        .padding(7)
+                                       TextField("Email", text: $raVm.email)
+                                           .keyboardType(.emailAddress)
+                                           .autocapitalization(.none)
+                                           .focused($isEmailFocused)
+                                           .onSubmit {
+                                               isPasswordFocused = true
+                                           }
+                                           .padding()
+                                           .background(Color(red: 0.85, green: 0.85, blue: 0.85))
+                                           .cornerRadius(22)
+                                           .overlay(
+                                               RoundedRectangle(cornerRadius: 22)
+                                                   .inset(by: -1)
+                                                   .stroke(Color(red: 0.58, green: 0.03, blue: 0.62), lineWidth: 2)
+                                           )
+                                       
+                                       SecureField("Password", text: $raVm.password)
+                                           .focused($isPasswordFocused)
+                                           .padding()
+                                           .background(Color(red: 0.85, green: 0.85, blue: 0.85))
+                                           .cornerRadius(22)
+                                           .overlay(
+                                               RoundedRectangle(cornerRadius: 22)
+                                                   .inset(by: -1)
+                                                   .stroke(Color(red: 0.58, green: 0.03, blue: 0.62), lineWidth: 2)
+                                           )
+                                   }
+                                   .multilineTextAlignment(.center)
+                                   .font(.system(size: 21))
+                                   .foregroundColor(.black)
+                                   .frame(width: 277, height: 60)
+                                   .padding(7)
+                               
+                    
                         
                         
                         
@@ -175,6 +189,11 @@ struct RegAuthView: View {
                         }
         }.alert(isPresented: $raVm.showAlert) {
             Alert(title: Text("notification"), message: Text(raVm.alertMessage), dismissButton: .default(Text("OK")))
+        }
+        .contentShape(Rectangle()) // Make the whole VStack tappable
+        .onTapGesture {
+            isPasswordFocused = false
+            isEmailFocused = false
         }
     }
     
