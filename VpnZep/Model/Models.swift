@@ -107,5 +107,5 @@ struct PrivacyPolicy: Identifiable, Codable {
 struct Configs: Identifiable, Codable {
     @DocumentID var id: String?
     var conf: String
-    var using: Bool
+    var uid: String?
 }

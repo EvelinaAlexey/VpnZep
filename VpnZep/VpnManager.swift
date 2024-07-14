@@ -7,12 +7,31 @@
 
 import Foundation
 import NetworkExtension
+import GRDWireGuardKit
+import SwiftUI
+import Combine
 
 class VpnManager: ObservableObject {
     
-    var vpnStatus = UserDefaults.standard.bool(forKey: "vpnStatus")
 //    @Published var status = false
+
+    var vpnManager: NETunnelProviderManager?
     
+
+    @Published var vpnStatus: NEVPNStatus = .disconnected
+    
+    private var vpnStatusObserver: AnyCancellable?
+
+    init() {
+        loadVPNStatus()
+
+        observeVPNStatusChanges()
+    }
+    
+    deinit {
+        vpnStatusObserver?.cancel()
+    }
+
     @Published var wgQuickConfig: String = """
 """
     
@@ -66,7 +85,7 @@ class VpnManager: ObservableObject {
                             completionHandler(false)
                             return
                         }
-
+                        self.vpnStatus =  tunnelManager.connection.status
                         // At this point, the tunnel is configured.
                         // Attempt to start the tunnel
                         do {
@@ -75,8 +94,9 @@ class VpnManager: ObservableObject {
                                 fatalError("tunnelManager.connection is invalid")
                             }
                             try session.startTunnel()
-                            self.vpnStatus = true
-                            UserDefaults.standard.set(self.vpnStatus, forKey: "vpnStatus")
+                            self.vpnStatus = .connected // Обновляем статус VPN
+
+    
                         } catch {
                             NSLog("Error (startTunnel): \(error)")
                             completionHandler(false)
@@ -114,19 +134,25 @@ class VpnManager: ObservableObject {
 //                            return
 //                        }
 //                    }
+                    let protocolConfiguration = NETunnelProviderProtocol()
 
                     switch session.status {
                     case .connected, .connecting, .reasserting:
                         NSLog("Stopping the tunnel")
                         session.stopTunnel()
-                        self.vpnStatus = false
-                        UserDefaults.standard.set(self.vpnStatus, forKey: "vpnStatus")
+                        self.vpnStatus = .disconnected // Обновляем статус VPN
+
+//                        protocolConfiguration.providerConfiguration?.removeAll()
+
+//                        self.vpnStatus = false
+//                        UserDefaults.standard.set(self.vpnStatus, forKey: "vpnStatus")
                     default:
                         break
                     }
                 }
             }
         }
+    
     
     func formatConfigString(_ configString: String) -> String {
         var formattedConfig = ""
@@ -157,44 +183,44 @@ class VpnManager: ObservableObject {
         return formattedConfig
     }
     
-//    func checkVPNStatus(notification: Notification) {
-//        guard let connection = notification.object as? NETunnelProviderSession else {
-//            return
-//        }
-//        guard let _ = connection.manager.localizedDescription else {
-//            return
-//        }
-//        
-//        self.vpnStatus = connection.status
-//        print(self.vpnStatus)
-//        
-//    }
-    
-//    func checkVPNStatus() {
-//        let manager = NEVPNManager.shared()
-//
-//        switch manager.connection.status {
-//        case .disconnected:
-//            print("VPN is disconnected")
-//            connected = false
-//        case .connecting:
-//            print("VPN is connecting")
-//        case .connected:
-//            print("VPN is connected")
-//            connected = true
-//
-//        case .reasserting:
-//            print("VPN is reconnecting")
-//        case .disconnecting:
-//            print("VPN is disconnecting")
-//        case .invalid:
-//            print("VPN is invalid")
-//        @unknown default:
-//            print("Unknown VPN status")
-//        }
-//    }
-    
+    private func observeVPNStatusChanges() {
+        self.vpnStatusObserver = NotificationCenter.default.publisher(for: .NEVPNStatusDidChange)
+            .sink { _ in
+//                self.loadVPNStatus()
+            }
+    }
+    private func loadVPNStatus() {
+        NETunnelProviderManager.loadAllFromPreferences { managers, error in
+            if let error = error {
+                print("Error loading VPN preferences: \(error.localizedDescription)")
+                self.vpnStatus = .disconnected
+                return
+            }
+            
+            guard let manager = managers?.first else {
+                self.vpnStatus = .disconnected
+                return
+            }
+            
+            self.vpnManager = manager
+            
+            manager.loadFromPreferences { error in
+                if let error = error {
+                    print("Error loading VPN preferences: \(error.localizedDescription)")
+                    self.vpnStatus = .disconnected
+                    return
+                }
+                
+                self.vpnStatus = manager.connection.status
+            }
+        }
+    }
 }
+
+
+
+
+
 
 
 

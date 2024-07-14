@@ -17,8 +17,10 @@ import YandexMobileAds
 struct VpnZepApp: App {
     
     init() {
-        MobileAds.setUserConsent(true)
-        MobileAds.initializeSDK()
+//        MobileAds.setUserConsent(true)
+//        MobileAds.initializeSDK()
+//        FirebaseApp.configure()
+//        Firestore.firestore()
     }
     
     var shouldShowMainView = UserDefaults.standard.bool(forKey: "shouldShowMainView")
@@ -28,13 +30,15 @@ struct VpnZepApp: App {
             WindowGroup {
                 if shouldShowMainView {
                     MainView()
-                        .environmentObject(appDelegate.adManager)
+//                        .environmentObject(appDelegate.adManager)
 
                 } else {
                     if UserDefaults.standard.welcomeScreenShown {
                         RegAuthView()
+//                            .environmentObject(appDelegate.adManager)
                     } else {
                         WelcomeView()
+//                            .environmentObject(appDelegate.adManager)
                     }
                 }
 
