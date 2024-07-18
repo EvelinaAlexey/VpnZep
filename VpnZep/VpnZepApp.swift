@@ -17,10 +17,10 @@ import YandexMobileAds
 struct VpnZepApp: App {
     
     init() {
-//        MobileAds.setUserConsent(true)
-//        MobileAds.initializeSDK()
-//        FirebaseApp.configure()
-//        Firestore.firestore()
+        //        MobileAds.setUserConsent(true)
+        //        MobileAds.initializeSDK()
+        //        FirebaseApp.configure()
+        
     }
     
     var shouldShowMainView = UserDefaults.standard.bool(forKey: "shouldShowMainView")

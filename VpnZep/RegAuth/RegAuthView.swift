@@ -10,6 +10,8 @@ import GoogleSignIn
 import FirebaseCore
 import FirebaseAuth
 import _AuthenticationServices_SwiftUI
+import AuthenticationServices
+import Firebase
 
 
 struct RegAuthView: View {
@@ -139,6 +141,7 @@ struct RegAuthView: View {
 
 // Новая кнопка Apple Sign In
                             SignInWithAppleButton(.signIn) { request in
+                                print("aaaaaaaa")
                                 let nonce = raVm.randomNonceString()
                                 raVm.nonce = nonce
                                 request.requestedScopes = [.email, .fullName]
@@ -191,10 +194,10 @@ struct RegAuthView: View {
             Alert(title: Text("notification"), message: Text(raVm.alertMessage), dismissButton: .default(Text("OK")))
         }
         .contentShape(Rectangle()) // Make the whole VStack tappable
-        .onTapGesture {
-            isPasswordFocused = false
-            isEmailFocused = false
-        }
+//        .onTapGesture {
+//            isPasswordFocused = false
+//            isEmailFocused = false
+//        }
     }
     
     func handleAction() {

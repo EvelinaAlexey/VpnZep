@@ -11,7 +11,6 @@ import FirebaseAuth
 import GoogleSignIn
 import UserNotifications
 import Firebase
-import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
