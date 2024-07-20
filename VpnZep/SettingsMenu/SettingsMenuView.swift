@@ -153,7 +153,7 @@ struct SettingsMenuView: View {
                 }
     }
     func openTg() {
-        if let url = URL(string: "https://t.me/etoevelina") {
+        if let url = URL(string: "https://t.me/VpnZep") {
             UIApplication.shared.open(url)
         }
     }

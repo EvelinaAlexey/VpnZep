@@ -149,7 +149,7 @@ struct MainView: View {
                             
                             
                             VStack{
-                                Text("VPN Status: \(vpnManager.vpnStatus)")
+                               // Text("VPN Status: \(vpnManager.vpnStatus)")
                                 
                                 if vpnManager.vpnStatus == .disconnected {
                                     SwipeToUnlockView()
