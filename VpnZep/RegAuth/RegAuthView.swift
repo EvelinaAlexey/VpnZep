@@ -63,10 +63,7 @@ struct RegAuthView: View {
                                        TextField("Email", text: $raVm.email)
                                            .keyboardType(.emailAddress)
                                            .autocapitalization(.none)
-                                           .focused($isEmailFocused)
-                                           .onSubmit {
-                                               isPasswordFocused = true
-                                           }
+                                           
                                            .padding()
                                            .background(Color(red: 0.85, green: 0.85, blue: 0.85))
                                            .cornerRadius(22)
