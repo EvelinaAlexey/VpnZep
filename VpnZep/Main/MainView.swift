@@ -12,18 +12,20 @@ import NetworkExtension
 
 
 struct MainView: View {
-
     @ObservedObject var vm = MainViewModel()
     @ObservedObject var configVm = ConfigsManager()
-//    @ObservedObject var adManager = AdManager()
+    // @ObservedObject var adManager = AdManager()
 
     @State private var showAds = false
     @State private var showUnlock = false
     @State private var didUnlock = false
     @State private var showLoading = false
-    @State private var selectedCountry: Country?
-    @State var showSelectedCountry = UserDefaults.standard.value(forKey: "showSelectedCountry")
-
+    @State private var selectedCountry: Country? {
+        didSet {
+            configVm.country = selectedCountry
+        }
+    }
+    @State private var showSelectedCountry = UserDefaults.standard.value(forKey: "showSelectedCountry")
     @State private var showCountryPicker = false
     @State private var showSettingsMenu = false
     @State private var petCount = 0
@@ -31,18 +33,16 @@ struct MainView: View {
     @State private var availible = true
     @State private var showAlert = false
     @State private var alertMessage = ""
-    
 
     var body: some View {
         NavigationView {
-            
             ZStack {
                 Image("back")
                     .resizable()
                     .scaledToFill()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
-                
+
                 HStack(spacing: 0) {
                     if showSettingsMenu {
                         SettingsMenuView(showSettingsMenu: $showSettingsMenu)
@@ -50,7 +50,7 @@ struct MainView: View {
                             .background(Color.white)
                             .transition(.move(edge: .leading))
                     }
-                    
+
                     ZStack {
                         VStack(spacing: 10) {
                             HStack {
@@ -84,7 +84,7 @@ struct MainView: View {
                                     .font(.custom("BungeeHairline-Regular", size: 122))
                                     .foregroundColor(.white)
                             }
-                            
+
                             VStack {
                                 if !showCountryPicker {
                                     Button(action: {
@@ -132,7 +132,7 @@ struct MainView: View {
                                         }
                                     }.disabled(availible == false)
                                 }
-                                
+
                                 if showCountryPicker {
                                     CountryPickerView(selectedCountry: $selectedCountry, showCountryPicker: $showCountryPicker)
                                         .frame(width: 347, height: 209)
@@ -145,75 +145,41 @@ struct MainView: View {
                             }
                             .padding()
                             .animation(.easeInOut, value: showCountryPicker)
-                            
-                            
-                            
-                            VStack{
-                               // Text("VPN Status: \(vpnManager.vpnStatus)")
-                                
+
+                            VStack {
                                 if vpnManager.vpnStatus == .disconnected {
                                     SwipeToUnlockView()
-                                    
                                         .onSwipeSuccess {
                                             withAnimation(.spring()) {
                                                 self.didUnlock = true
                                                 self.showUnlock = false
                                             }
                                             showLoading = true
-                                           
-                                            
-                                            
+
                                             configVm.fetchConfForCurrentUser() { result in
                                                 switch result {
                                                 case .success(let conf):
                                                     print("Получена случайная строка conf:")
                                                     print(conf)
-                                                    // Делайте что-то с полученной строкой conf
-//                                                    if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
-//                                                        adManager.showAd(from: rootViewController)
-//                                                    }
-
                                                     vpnManager.formatConfigString(conf)
                                                     vpnManager.turnOnTunnel { bool in
                                                         print(bool)
                                                     }
                                                 case .failure(let error):
                                                     print("Ошибка: \(error.localizedDescription)")
-                                                    // Обработка ошибки при получении данных
                                                 }
                                             }
-                                            
-                                            //тут должна быть обратботка закрытия рекламы
-                                            //                                            vpnManager.downloadConfigFile()
-                                            
+
                                             availible = false
                                             showLoading = false
                                         }
                                         .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
-                                }
-                                
-                     
-                                else {
+                                } else {
                                     Button {
                                         withAnimation(.spring()) {
-
+                                            vpnManager.turnOffTunnel()
+                                            availible = true
                                         }
-//                                        configVm.setUsingToFalse { result in
-//                                            switch result {
-//                                            case .success:
-//                                                print("Значение поля using успешно обновлено на false")
-//                                                // Добавьте свою логику после успешного обновления
-//                                                //                                                    showAds = false
-//                                            case .failure(let error):
-//                                                print("Ошибка: \(error.localizedDescription)")
-//                                                showAlert.toggle()
-//                                                alertMessage = "errConnection"
-//                                            }
-//                                        }
-                                        vpnManager.turnOffTunnel()
-                                        //                                            self.didUnlock = false
-                                        //                                            self.showUnlock = true
-                                        availible = true
                                     } label: {
                                         Text("Disconnect")
                                             .font(.system(size: 19, weight: .medium))
@@ -241,72 +207,58 @@ struct MainView: View {
                                     }.transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                                 }
                             }.padding(.top)
-                            
-                            //Spacer()
+
                         }
                         .padding(.bottom)
                         .animation(.default, value: showLoading)
                         .onAppear {
                             vm.fetchCurrentUserEmail()
                             vm.checkEmailVerification()
-                            loadSelectedCountry() //загружаем страну
+                            loadSelectedCountry()
                         }
                     }
                     .frame(width: UIScreen.main.bounds.width - (showSettingsMenu ? 240 : 0))
                     .offset(x: showSettingsMenu ? 130 : 0)
                 }
-                
                 .onChange(of: selectedCountry) { newCountry in
-                    saveSelectedCountry(newCountry) // сохраняем страну
+                    saveSelectedCountry(newCountry)
                     if newCountry != nil {
+                        selectedCountry = newCountry
                         showUnlock = true
                     } else {
                         showUnlock = false
                     }
                 }
-             
             }.padding(.top)
-            
                 .contentShape(Rectangle())
                 .onTapGesture {
                     withAnimation {
                         showSettingsMenu = false
                     }
-                    
                 }
-//                .navigationTitle("Connection")
-//                .navigationBarHidden(true)
-
-        }.alert(isPresented: $showAlert) {
-            Alert(title: Text("notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                }
         }
-//        .onAppear {
-//            if adManager.interstitialAd == nil {
-//                adManager.loadAd()
-//            }
-//        }
-//        .onAppear {
-//            vpnManager.updateVPNStatus()
-//            
-//        }
     }
-    private func saveSelectedCountry(_ country: Country?) {
-           if let country = country {
-               let data = try? JSONEncoder().encode(country)
-               UserDefaults.standard.set(data, forKey: "selectedCountry")
-           } else {
-               UserDefaults.standard.removeObject(forKey: "selectedCountry")
-           }
-       }
 
-       // Функция для загрузки выбранной страны из UserDefaults
-       private func loadSelectedCountry() {
-           if let data = UserDefaults.standard.data(forKey: "selectedCountry"),
-              let country = try? JSONDecoder().decode(Country.self, from: data) {
-               self.selectedCountry = country
-           }
-       }
+    private func saveSelectedCountry(_ country: Country?) {
+        if let country = country {
+            let data = try? JSONEncoder().encode(country)
+            UserDefaults.standard.set(data, forKey: "selectedCountry")
+        } else {
+            UserDefaults.standard.removeObject(forKey: "selectedCountry")
+        }
+    }
+
+    private func loadSelectedCountry() {
+        if let data = UserDefaults.standard.data(forKey: "selectedCountry"),
+           let country = try? JSONDecoder().decode(Country.self, from: data) {
+            self.selectedCountry = country
+        }
+    }
 }
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

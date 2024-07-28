@@ -86,7 +86,24 @@ import SwiftUI
 //}
 
 class ConfigsManager: ObservableObject {
-    let db = Firestore.firestore().collection("configs")
+
+    @Published var country: Country? {
+        didSet {
+            if let country = country {
+                db = Firestore.firestore().collection(country.collection)
+            }
+        }
+    }
+    var db: CollectionReference
+
+    init(country: Country? = nil) {
+        if let country = country {
+            self.db = Firestore.firestore().collection(country.collection)
+        } else {
+            self.db = Firestore.firestore().collection("defaultCollection")
+        }
+        self.country = country
+    }
 
     func fetchConfForCurrentUser(completion: @escaping (Result<String, Error>) -> Void) {
         guard let uid = FirebaseManager.shareds.auth.currentUser?.uid else {
@@ -147,6 +164,7 @@ class ConfigsManager: ObservableObject {
                     completion(.failure(NSError(domain: "AppErrorDomain", code: -1, userInfo: [NSLocalizedDescriptionKey: "Подходящая конфигурация не найдена"])))
                 }
             }
+            print(self.country?.collection)
         }
     }
 }

@@ -50,6 +50,7 @@ struct Country: Identifiable, Codable {
     var id = UUID()
         let name: String
     let flagName: String
+    let collection: String
     
     
     
@@ -57,12 +58,13 @@ struct Country: Identifiable, Codable {
             Image(flagName)
         }
         
-        init(id: UUID = UUID(), name: String, flagName: String) {
+    init(id: UUID = UUID(), name: String, flagName: String, collection: String) {
             self.id = id
             self.name = name
             self.flagName = flagName
+            self.collection = collection
         }
-    }
+}
 
 
     extension Country: Equatable {
