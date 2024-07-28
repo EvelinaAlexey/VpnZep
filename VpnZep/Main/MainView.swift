@@ -10,6 +10,7 @@ import YandexMobileAds
 import UIKit
 import NetworkExtension
 
+
 struct MainView: View {
     @ObservedObject var vm = MainViewModel()
     @ObservedObject var configVm = ConfigsManager()
@@ -22,7 +23,6 @@ struct MainView: View {
     @State private var selectedCountry: Country? {
         didSet {
             configVm.country = selectedCountry
-            showUnlock = selectedCountry != nil
         }
     }
     @State private var showSelectedCountry = UserDefaults.standard.value(forKey: "showSelectedCountry")
@@ -149,36 +149,32 @@ struct MainView: View {
 
                             VStack {
                                 if vpnManager.vpnStatus == .disconnected {
-                                    if showUnlock {
-                                        SwipeToUnlockView()
-                                            .onSwipeSuccess {
-                                                withAnimation(.spring()) {
-                                                    self.didUnlock = true
-                                                    self.showUnlock = false
-                                                }
-                                                showLoading = true
-
-                                                configVm.fetchConfForCurrentUser() { result in
-                                                    switch result {
-                                                    case .success(let conf):
-                                                        print("Получена случайная строка conf:")
-                                                        print(conf)
-                                                        vpnManager.formatConfigString(conf)
-                                                        vpnManager.turnOnTunnel { bool in
-                                                            print(bool)
-                                                        }
-                                                    case .failure(let error):
-                                                        print("Ошибка: \(error.localizedDescription)")
-                                                    }
-                                                }
-
-                                                availible = false
-                                                showLoading = false
+                                    SwipeToUnlockView()
+                                        .onSwipeSuccess {
+                                            withAnimation(.spring()) {
+                                                self.didUnlock = true
+                                                self.showUnlock = false
                                             }
-                                            .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
-                                    } else {
-                                        
-                                    }
+                                            showLoading = true
+
+                                            configVm.fetchConfForCurrentUser() { result in
+                                                switch result {
+                                                case .success(let conf):
+                                                    print("Получена случайная строка conf:")
+                                                    print(conf)
+                                                    vpnManager.formatConfigString(conf)
+                                                    vpnManager.turnOnTunnel { bool in
+                                                        print(bool)
+                                                    }
+                                                case .failure(let error):
+                                                    print("Ошибка: \(error.localizedDescription)")
+                                                }
+                                            }
+
+                                            availible = false
+                                            showLoading = false
+                                        }
+                                        .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
                                 } else {
                                     Button {
                                         withAnimation(.spring()) {
@@ -227,7 +223,12 @@ struct MainView: View {
                 }
                 .onChange(of: selectedCountry) { newCountry in
                     saveSelectedCountry(newCountry)
-                    showUnlock = newCountry != nil
+                    if newCountry != nil {
+                        selectedCountry = newCountry
+                        showUnlock = true
+                    } else {
+                        showUnlock = false
+                    }
                 }
             }.padding(.top)
                 .contentShape(Rectangle())
@@ -259,9 +260,9 @@ struct MainView: View {
     }
 }
 
+
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
     }
 }
-
