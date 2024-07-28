@@ -15,11 +15,11 @@ struct CountryPickerView: View {
     let countries = [
         Country(name: "UK", flagName: "uk_flag", collection: "configs"),
         Country(name: "France", flagName: "france_flag", collection: "configsFR"),
-        Country(name: "UAE", flagName: "uae_flag", collection: ""),
-        Country(name: "Austria", flagName: "austria_flag", collection: ""),
-        Country(name: "German", flagName: "german_flag", collection: ""),
-        Country(name: "Netherlands", flagName: "netherlands_flag", collection: ""),
-        Country(name: "USA", flagName:"usa_flag", collection: "")
+        Country(name: "UAE", flagName: "uae_flag", collection: "configs"),
+        Country(name: "Austria", flagName: "austria_flag", collection: "configs"),
+        Country(name: "German", flagName: "german_flag", collection: "configsFR"),
+        Country(name: "Netherlands", flagName: "netherlands_flag", collection: "configsFR"),
+        Country(name: "USA", flagName:"usa_flag", collection: "configsFR")
         
     ]
     

@@ -90,6 +90,7 @@ struct MainView: View {
                                     Button(action: {
                                         withAnimation {
                                             showCountryPicker.toggle()
+                                            showUnlock.toggle()
                                         }
                                     }) {
                                         if let selectedCountry = selectedCountry {
@@ -148,64 +149,66 @@ struct MainView: View {
                             .animation(.easeInOut, value: showCountryPicker)
 
                             VStack {
-                                if vpnManager.vpnStatus == .disconnected {
-                                    SwipeToUnlockView()
-                                        .onSwipeSuccess {
-                                            withAnimation(.spring()) {
-                                                self.didUnlock = true
-                                                self.showUnlock = false
-                                            }
-                                            showLoading = true
-
-                                            configVm.fetchConfForCurrentUser() { result in
-                                                switch result {
-                                                case .success(let conf):
-                                                    print("Получена случайная строка conf:")
-                                                    print(conf)
-                                                    vpnManager.formatConfigString(conf)
-                                                    vpnManager.turnOnTunnel { bool in
-                                                        print(bool)
-                                                    }
-                                                case .failure(let error):
-                                                    print("Ошибка: \(error.localizedDescription)")
+                                if showUnlock {
+                                    if vpnManager.vpnStatus == .disconnected {
+                                        SwipeToUnlockView()
+                                            .onSwipeSuccess {
+                                                withAnimation(.spring()) {
+//                                                    self.didUnlock = true
+//                                                    self.showUnlock = false
                                                 }
+                                                showLoading = true
+                                                
+                                                configVm.fetchConfForCurrentUser() { result in
+                                                    switch result {
+                                                    case .success(let conf):
+                                                        print("Получена случайная строка conf:")
+                                                        print(conf)
+                                                        vpnManager.formatConfigString(conf)
+                                                        vpnManager.turnOnTunnel { bool in
+                                                            print(bool)
+                                                        }
+                                                    case .failure(let error):
+                                                        print("Ошибка: \(error.localizedDescription)")
+                                                    }
+                                                }
+                                                
+                                                availible = false
+                                                showLoading = false
                                             }
-
-                                            availible = false
-                                            showLoading = false
-                                        }
-                                        .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
-                                } else {
-                                    Button {
-                                        withAnimation(.spring()) {
-                                            vpnManager.turnOffTunnel()
-                                            availible = true
-                                        }
-                                    } label: {
-                                        Text("Disconnect")
-                                            .font(.system(size: 19, weight: .medium))
-                                            .foregroundColor(.white)
-                                            .padding(.vertical, 14)
-                                            .padding(.horizontal)
-                                            .background(
-                                                LinearGradient(
-                                                    stops: [
-                                                        Gradient.Stop(color: Color(red: 0.49, green: 0, blue: 0.44), location: 0),
-                                                        Gradient.Stop(color: Color(red: 0.55, green: 0.55, blue: 0.55).opacity(0.68), location: 0.56),
-                                                        Gradient.Stop(color: Color(red: 0.47, green: 0.47, blue: 0.47).opacity(0.36), location: 0.95),
-                                                    ],
-                                                    startPoint: UnitPoint(x: 0.5, y: -0.91),
-                                                    endPoint: UnitPoint(x: 0.5, y: 3.36)
+                                            .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
+                                    } else {
+                                        Button {
+                                            withAnimation(.spring()) {
+                                                vpnManager.turnOffTunnel()
+                                                availible = true
+                                            }
+                                        } label: {
+                                            Text("Disconnect")
+                                                .font(.system(size: 19, weight: .medium))
+                                                .foregroundColor(.white)
+                                                .padding(.vertical, 14)
+                                                .padding(.horizontal)
+                                                .background(
+                                                    LinearGradient(
+                                                        stops: [
+                                                            Gradient.Stop(color: Color(red: 0.49, green: 0, blue: 0.44), location: 0),
+                                                            Gradient.Stop(color: Color(red: 0.55, green: 0.55, blue: 0.55).opacity(0.68), location: 0.56),
+                                                            Gradient.Stop(color: Color(red: 0.47, green: 0.47, blue: 0.47).opacity(0.36), location: 0.95),
+                                                        ],
+                                                        startPoint: UnitPoint(x: 0.5, y: -0.91),
+                                                        endPoint: UnitPoint(x: 0.5, y: 3.36)
+                                                    )
                                                 )
-                                            )
-                                            .cornerRadius(26)
-                                            .shadow(color: Color(red: 0, green: 0, blue: 0).opacity(0.25), radius: 2, x: 4, y: 8)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 26)
-                                                    .inset(by: -0.5)
-                                                    .stroke(Color(red: 0.3, green: 0.14, blue: 0.57), lineWidth: 1)
-                                            )
-                                    }.transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
+                                                .cornerRadius(26)
+                                                .shadow(color: Color(red: 0, green: 0, blue: 0).opacity(0.25), radius: 2, x: 4, y: 8)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 26)
+                                                        .inset(by: -0.5)
+                                                        .stroke(Color(red: 0.3, green: 0.14, blue: 0.57), lineWidth: 1)
+                                                )
+                                        }.transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
+                                    }
                                 }
                             }.padding(.top)
 
