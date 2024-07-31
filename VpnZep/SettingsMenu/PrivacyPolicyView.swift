@@ -71,7 +71,7 @@ struct PrivacyPolicyView: View {
                         - **Objection**: You have the right to object to the processing of your personal information.
                         - **Portability**: You have the right to request a copy of your personal information in a structured, commonly used, and machine-readable format.
                         
-                        To exercise these rights, please contact us at evelinaalexey@gmail.com
+                        To exercise these rights, please contact us at vpnzep@gmail.com
                         """)
                     }
                     
@@ -91,7 +91,7 @@ struct PrivacyPolicyView: View {
                         Text("""
                         If you have any questions about this Privacy Policy, please contact us at:
                         
-                        Email: evelinaalexey@gmail.com
+                        Email: vpnzep@gmail.com
                         
                         By using VPN Zephyr, you acknowledge that you have read and understood this Privacy Policy and agree to its terms.
                         """)

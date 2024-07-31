@@ -119,12 +119,12 @@ struct SettingsMenuView: View {
 //                            )
 //                            .scaleEffect(pulsate ? 1.1 : 1.0)
 //                    }
-                    .onAppear {
-                        withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
-                            self.pulsate = true
-                        }
-                    }
-                    .padding(.top, 100)
+//                    .onAppear {
+//                        withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+//                            self.pulsate = true
+//                        }
+//                    }
+//                    .padding(.top, 100)
             }
                 .padding(.top, 20)
                 Spacer()
