@@ -45,6 +45,7 @@ struct SettingsMenuView: View {
                                 .foregroundColor(.white)
                             
                         }
+                        .padding(.top, 30)
                         Spacer()
                     }
                     HStack{
@@ -100,8 +101,9 @@ struct SettingsMenuView: View {
                         Text("signOut")
                             .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.white)
-                        Spacer()
+                       
                     }
+                    Spacer()
                 }
                     
 //                    NavigationLink(destination: PremiumPageView()) {
@@ -119,12 +121,12 @@ struct SettingsMenuView: View {
 //                            )
 //                            .scaleEffect(pulsate ? 1.1 : 1.0)
 //                    }
-                    .onAppear {
-                        withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
-                            self.pulsate = true
-                        }
-                    }
-                    .padding(.top, 100)
+//                    .onAppear {
+//                        withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+//                            self.pulsate = true
+//                        }
+//                    }
+//                    .padding(.top, 100)
             }
                 .padding(.top, 20)
                 Spacer()
