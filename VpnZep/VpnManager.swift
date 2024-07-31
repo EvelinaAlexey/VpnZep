@@ -17,7 +17,8 @@ class VpnManager: ObservableObject {
 
     var vpnManager: NETunnelProviderManager?
     
-
+    var ava = false
+    
     @Published var vpnStatus: NEVPNStatus = .disconnected
     
     private var vpnStatusObserver: AnyCancellable?
@@ -189,7 +190,7 @@ class VpnManager: ObservableObject {
 //                self.loadVPNStatus()
             }
     }
-    private func loadVPNStatus() {
+    func loadVPNStatus() {
         NETunnelProviderManager.loadAllFromPreferences { managers, error in
             if let error = error {
                 print("Error loading VPN preferences: \(error.localizedDescription)")
@@ -212,6 +213,9 @@ class VpnManager: ObservableObject {
                 }
                 
                 self.vpnStatus = manager.connection.status
+                if self.vpnStatus == .disconnected {
+                    self.ava = true
+                }
             }
         }
     }

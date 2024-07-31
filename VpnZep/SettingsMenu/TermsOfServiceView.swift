@@ -67,7 +67,7 @@ struct TermsOfServiceView: View {
                     }
                     
                     Section(header: Text("10. Contact Information").font(.headline)) {
-                        Text("If you have any questions about these Terms, please contact us at: evelinaalexey@gmail.com")
+                        Text("If you have any questions about these Terms, please contact us at: vpnzep@gmail.com")
                     }
                     
                     Text("By using VPN Zephyr, you acknowledge that you have read, understood, and agree to these Terms.")

@@ -177,7 +177,7 @@ struct MainView: View {
                                                 showLoading = false
                                             }
                                             .transition(AnyTransition.scale.animation(Animation.spring(response: 0.3, dampingFraction: 0.5)))
-                                    } else {
+                                    } else if vpnManager.vpnStatus == .connected {
                                         Button {
                                             withAnimation(.spring()) {
                                                 vpnManager.turnOffTunnel()
@@ -243,8 +243,22 @@ struct MainView: View {
                 .alert(isPresented: $showAlert) {
                     Alert(title: Text("notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                 }
+
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                    vpnManager.loadVPNStatus()
+                    availible = vpnManager.ava
+                }
+//                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+//                    isAvailible()
+//                }
         }
     }
+    
+//    private func isAvailible() {
+//        if vpnManager.vpnStatus != .connected {
+//            availible = true
+//        }
+//    }
 
     private func saveSelectedCountry(_ country: Country?) {
         if let country = country {
