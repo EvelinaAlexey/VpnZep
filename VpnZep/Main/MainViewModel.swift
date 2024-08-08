@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import YandexMobileAds
 import SwiftUI
 
 class MainViewModel: ObservableObject{

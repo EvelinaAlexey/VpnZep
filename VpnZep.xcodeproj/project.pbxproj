@@ -8,12 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8B2A203E2C35A23E0028532E /* ConfigsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A203D2C35A23E0028532E /* ConfigsManager.swift */; };
-		8B53A18C2C3C320200D6E515 /* YandexAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53A18B2C3C320200D6E515 /* YandexAdsManager.swift */; };
 		8B6616412C2734210029F6E6 /* VpnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6616402C2734210029F6E6 /* VpnManager.swift */; };
 		8B7013702C261ED300BACE0B /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */; };
 		8B7013742C261F3400BACE0B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */; };
-		8BA13E442C3C809400836998 /* YandexMobileAdsPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 8BA13E432C3C809400836998 /* YandexMobileAdsPackage */; };
-		8BA13E462C3C819A00836998 /* MobileAdsBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8BA13E452C3C819A00836998 /* MobileAdsBundle.bundle */; };
 		8BC41F852C343E1D000CFE75 /* GRDWireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BC41F842C343E1D000CFE75 /* GRDWireGuardKit */; };
 		8BC41F8F2C344EB4000CFE75 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B70137D2C2627F000BACE0B /* NetworkExtension.framework */; };
 		8BC41F922C344EB4000CFE75 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC41F912C344EB4000CFE75 /* PacketTunnelProvider.swift */; };
@@ -120,12 +117,10 @@
 
 /* Begin PBXFileReference section */
 		8B2A203D2C35A23E0028532E /* ConfigsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigsManager.swift; sourceTree = "<group>"; };
-		8B53A18B2C3C320200D6E515 /* YandexAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexAdsManager.swift; sourceTree = "<group>"; };
 		8B6616402C2734210029F6E6 /* VpnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnManager.swift; sourceTree = "<group>"; };
 		8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
 		8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		8B70137D2C2627F000BACE0B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		8BA13E452C3C819A00836998 /* MobileAdsBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobileAdsBundle.bundle; sourceTree = "<group>"; };
 		8BC41F8E2C344EB4000CFE75 /* TunnelExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TunnelExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC41F912C344EB4000CFE75 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		8BC41F932C344EB4000CFE75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -208,7 +203,6 @@
 				FD8AD8EB2C2440DF008C4FCB /* FirebaseStorage in Frameworks */,
 				FD8AD8CF2C2440DF008C4FCB /* FirebaseDynamicLinks in Frameworks */,
 				FD8AD8EF2C2440DF008C4FCB /* FirebaseVertexAI-Preview in Frameworks */,
-				8BA13E442C3C809400836998 /* YandexMobileAdsPackage in Frameworks */,
 				FD8AD8D32C2440DF008C4FCB /* FirebaseFirestoreCombine-Community in Frameworks */,
 				FD8AD8E32C2440DF008C4FCB /* FirebaseMessaging in Frameworks */,
 				8BC41F852C343E1D000CFE75 /* GRDWireGuardKit in Frameworks */,
@@ -309,7 +303,6 @@
 		FD8AD8542C243C3F008C4FCB = {
 			isa = PBXGroup;
 			children = (
-				8BA13E452C3C819A00836998 /* MobileAdsBundle.bundle */,
 				FD8AD85F2C243C3F008C4FCB /* VpnZep */,
 				FD8AD8712C243C40008C4FCB /* VpnZepTests */,
 				FD8AD87B2C243C40008C4FCB /* VpnZepUITests */,
@@ -338,7 +331,6 @@
 				FD8AD8972C243C8A008C4FCB /* FirebaseManager.swift */,
 				8B6616402C2734210029F6E6 /* VpnManager.swift */,
 				8B2A203D2C35A23E0028532E /* ConfigsManager.swift */,
-				8B53A18B2C3C320200D6E515 /* YandexAdsManager.swift */,
 				8B70136E2C261E8C00BACE0B /* Model */,
 				8B7013752C261FFE00BACE0B /* Extensions */,
 				8B70136D2C261E3600BACE0B /* Main */,
@@ -450,7 +442,6 @@
 				FD8AD8F02C2441F6008C4FCB /* GoogleSignIn */,
 				FD8AD8F22C2441F6008C4FCB /* GoogleSignInSwift */,
 				8BC41F842C343E1D000CFE75 /* GRDWireGuardKit */,
-				8BA13E432C3C809400836998 /* YandexMobileAdsPackage */,
 			);
 			productName = VpnZep;
 			productReference = FD8AD85D2C243C3F008C4FCB /* VpnZep.app */;
@@ -532,7 +523,6 @@
 				FD8AD8B12C243CF2008C4FCB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				FD8AD8B22C243D2D008C4FCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */,
-				8BA13E422C3C809400836998 /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */,
 			);
 			productRefGroup = FD8AD85E2C243C3F008C4FCB /* Products */;
 			projectDirPath = "";
@@ -558,7 +548,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BA13E462C3C819A00836998 /* MobileAdsBundle.bundle in Resources */,
 				FDC1F13B2C249ED500B82A6A /* Localizable.strings in Resources */,
 				FD8AD8692C243C40008C4FCB /* Preview Assets.xcassets in Resources */,
 				FD8AD8B62C243E1A008C4FCB /* GoogleService-Info.plist in Resources */,
@@ -616,7 +605,6 @@
 				FD8AD8A72C243C8A008C4FCB /* GoogleView.swift in Sources */,
 				FD8AD8A02C243C8A008C4FCB /* Models.swift in Sources */,
 				FD9015172C29CB4A00B1978F /* PremiumPageView.swift in Sources */,
-				8B53A18C2C3C320200D6E515 /* YandexAdsManager.swift in Sources */,
 				FD8AD8A82C243C8A008C4FCB /* CountryPickerView.swift in Sources */,
 				FDF48F482C35BAC1001EF415 /* WelcomeView.swift in Sources */,
 				FD8AD8AF2C243C8A008C4FCB /* LoadingView.swift in Sources */,
@@ -885,7 +873,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = EvelinaAlexey.VpnZep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -928,7 +916,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = EvelinaAlexey.VpnZep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1077,14 +1065,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8BA13E422C3C809400836998 /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/yandexmobile/yandex-ads-sdk-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.1.1;
-			};
-		};
 		8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/GuardianFirewall/GuardianWireGuard";
@@ -1112,11 +1092,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8BA13E432C3C809400836998 /* YandexMobileAdsPackage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BA13E422C3C809400836998 /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */;
-			productName = YandexMobileAdsPackage;
-		};
 		8BC41F842C343E1D000CFE75 /* GRDWireGuardKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */;

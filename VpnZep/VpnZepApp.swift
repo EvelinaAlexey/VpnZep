@@ -11,7 +11,7 @@ import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
 import UserNotifications
-import YandexMobileAds
+
 
 @main
 struct VpnZepApp: App {
