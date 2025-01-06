@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F92BC1F2D2C2385009D37A8 /* GRDWireGuardKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F92BC1E2D2C2385009D37A8 /* GRDWireGuardKit.xcframework */; };
+		0F92BC202D2C247A009D37A8 /* GRDWireGuardKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F92BC1E2D2C2385009D37A8 /* GRDWireGuardKit.xcframework */; };
+		0F92BC212D2C247A009D37A8 /* GRDWireGuardKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F92BC1E2D2C2385009D37A8 /* GRDWireGuardKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B2A203E2C35A23E0028532E /* ConfigsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A203D2C35A23E0028532E /* ConfigsManager.swift */; };
 		8B6616412C2734210029F6E6 /* VpnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6616402C2734210029F6E6 /* VpnManager.swift */; };
 		8B7013702C261ED300BACE0B /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */; };
 		8B7013742C261F3400BACE0B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013732C261F3400BACE0B /* PrivacyPolicyView.swift */; };
-		8BC41F852C343E1D000CFE75 /* GRDWireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BC41F842C343E1D000CFE75 /* GRDWireGuardKit */; };
 		8BC41F8F2C344EB4000CFE75 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B70137D2C2627F000BACE0B /* NetworkExtension.framework */; };
 		8BC41F922C344EB4000CFE75 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC41F912C344EB4000CFE75 /* PacketTunnelProvider.swift */; };
 		8BC41F972C344EB4000CFE75 /* TunnelExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8BC41F8E2C344EB4000CFE75 /* TunnelExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8BC41F9C2C344ED8000CFE75 /* GRDWireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BC41F9B2C344ED8000CFE75 /* GRDWireGuardKit */; };
 		8BC41F9E2C344F09000CFE75 /* String+ArrayConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC41F9D2C344F09000CFE75 /* String+ArrayConversion.swift */; };
 		8BC41FA02C344F17000CFE75 /* TunnelConfiguration+WgQuickConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC41F9F2C344F17000CFE75 /* TunnelConfiguration+WgQuickConfig.swift */; };
 		FD05128A2C39D0B000D86C0B /* PriceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0512892C39D0B000D86C0B /* PriceCardView.swift */; };
@@ -102,6 +103,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0F92BC222D2C247A009D37A8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0F92BC212D2C247A009D37A8 /* GRDWireGuardKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B70138A2C2627F000BACE0B /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,6 +128,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F92BC1E2D2C2385009D37A8 /* GRDWireGuardKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GRDWireGuardKit.xcframework; sourceTree = "<group>"; };
 		8B2A203D2C35A23E0028532E /* ConfigsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigsManager.swift; sourceTree = "<group>"; };
 		8B6616402C2734210029F6E6 /* VpnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnManager.swift; sourceTree = "<group>"; };
 		8B70136F2C261ED300BACE0B /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
@@ -167,8 +180,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BC41F9C2C344ED8000CFE75 /* GRDWireGuardKit in Frameworks */,
 				8BC41F8F2C344EB4000CFE75 /* NetworkExtension.framework in Frameworks */,
+				0F92BC1F2D2C2385009D37A8 /* GRDWireGuardKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +191,7 @@
 			files = (
 				FD8AD8CB2C2440DF008C4FCB /* FirebaseDatabase in Frameworks */,
 				FD8AD8D92C2440DF008C4FCB /* FirebaseFunctionsCombine-Community in Frameworks */,
+				0F92BC202D2C247A009D37A8 /* GRDWireGuardKit.xcframework in Frameworks */,
 				FD8AD8D12C2440DF008C4FCB /* FirebaseFirestore in Frameworks */,
 				FD8AD8BD2C2440DF008C4FCB /* FirebaseAnalyticsSwift in Frameworks */,
 				FD8AD8B92C2440DF008C4FCB /* FirebaseAnalytics in Frameworks */,
@@ -205,7 +219,6 @@
 				FD8AD8EF2C2440DF008C4FCB /* FirebaseVertexAI-Preview in Frameworks */,
 				FD8AD8D32C2440DF008C4FCB /* FirebaseFirestoreCombine-Community in Frameworks */,
 				FD8AD8E32C2440DF008C4FCB /* FirebaseMessaging in Frameworks */,
-				8BC41F852C343E1D000CFE75 /* GRDWireGuardKit in Frameworks */,
 				FD8AD8DF2C2440DF008C4FCB /* FirebaseInstallations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				8B70137D2C2627F000BACE0B /* NetworkExtension.framework */,
+				0F92BC1E2D2C2385009D37A8 /* GRDWireGuardKit.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -389,7 +403,6 @@
 			);
 			name = TunnelExtension;
 			packageProductDependencies = (
-				8BC41F9B2C344ED8000CFE75 /* GRDWireGuardKit */,
 			);
 			productName = TunnelExtension;
 			productReference = 8BC41F8E2C344EB4000CFE75 /* TunnelExtension.appex */;
@@ -403,6 +416,7 @@
 				FD8AD85A2C243C3F008C4FCB /* Frameworks */,
 				FD8AD85B2C243C3F008C4FCB /* Resources */,
 				8B70138A2C2627F000BACE0B /* Embed Foundation Extensions */,
+				0F92BC222D2C247A009D37A8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -441,7 +455,6 @@
 				FD8AD8EE2C2440DF008C4FCB /* FirebaseVertexAI-Preview */,
 				FD8AD8F02C2441F6008C4FCB /* GoogleSignIn */,
 				FD8AD8F22C2441F6008C4FCB /* GoogleSignInSwift */,
-				8BC41F842C343E1D000CFE75 /* GRDWireGuardKit */,
 			);
 			productName = VpnZep;
 			productReference = FD8AD85D2C243C3F008C4FCB /* VpnZep.app */;
@@ -522,7 +535,6 @@
 			packageReferences = (
 				FD8AD8B12C243CF2008C4FCB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				FD8AD8B22C243D2D008C4FCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */,
 			);
 			productRefGroup = FD8AD85E2C243C3F008C4FCB /* Products */;
 			projectDirPath = "";
@@ -1065,14 +1077,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/GuardianFirewall/GuardianWireGuard";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		FD8AD8B12C243CF2008C4FCB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -1092,16 +1096,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8BC41F842C343E1D000CFE75 /* GRDWireGuardKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */;
-			productName = GRDWireGuardKit;
-		};
-		8BC41F9B2C344ED8000CFE75 /* GRDWireGuardKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BC41F812C343E03000CFE75 /* XCRemoteSwiftPackageReference "GuardianWireGuard" */;
-			productName = GRDWireGuardKit;
-		};
 		FD8AD8B82C2440DF008C4FCB /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FD8AD8B22C243D2D008C4FCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
